@@ -1,83 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOMASZEK | Professional Distribution</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --gold-light: #f3d97d; 
-            --gold-dark: #d4af37; 
-            --dark-bg: #1e1e26; 
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); margin: 0; }
-        
-        .video-container {
-            position: fixed; inset: 0; width: 100%; height: 100%;
-            z-index: -1; overflow: hidden;
-        }
-        .video-container video {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
-        }
 
-        .logo-text-gold {
-            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));
-        }
-    </style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>TOMASZEK | Professional Distribution</title>
+
+<meta name="description" content="Tomaszek Group – professional distribution and product catalog.">
+<meta name="author" content="Tomaszek Group">
+
+<link rel="icon" href="./img/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+:root{
+--gold-light:#f3d97d;
+--gold-dark:#d4af37;
+--dark-bg:#1e1e26;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--dark-bg);
+margin:0;
+}
+
+.video-container{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.video-container video{
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.6;
+}
+
+.logo-text-gold{
+background:linear-gradient(to bottom,var(--gold-light),var(--gold-dark));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+}
+
+</style>
+
 </head>
+
 <body class="text-white overflow-hidden">
 
-    <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="./video/promo.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="video-container">
 
-    <div class="relative z-10 h-screen flex flex-col justify-between">
-        
-        <nav class="flex justify-between items-center px-6 py-4 md:px-16 backdrop-blur-md bg-black/20">
-            <div class="flex items-center space-x-4">
-                <img src="./img/logo.png" alt="Tomaszek Logo" class="h-12 md:h-20">
-                <span class="text-2xl md:text-5xl font-black uppercase italic tracking-tighter logo-text-gold">
-                    Tomaszek
-                </span>
-            </div>
-            
-            <div class="flex items-center space-x-6 md:space-x-12">
-                <div class="hidden md:flex space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
-                    <a href="about-en.html" class="hover:text-[#d4af37] transition">About Us</a>
-                    <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
-                </div>
+<video autoplay muted loop playsinline>
 
-                <div class="flex space-x-2 text-[10px] font-black border-l border-white/20 pl-6">
-                    <a href="index.html" class="hover:text-[#d4af37] transition">PL</a>
-                    <span class="opacity-30">|</span>
-                    <a href="index-en.html" class="text-[#d4af37]">EN</a>
-                </div>
-            </div>
-        </nav>
+<source src="./video/promo.mp4" type="video/mp4">
 
-        <main class="px-6 md:px-16 flex flex-col items-start justify-center flex-grow">
-            <div class="max-w-4xl">
-                <p class="text-2xl md:text-5xl opacity-100 font-bold max-w-2xl leading-tight mb-10 border-l-8 border-[#d4af37] pl-8">
-                    PROFESSIONALISM & EXPERIENCE<br>
-                </p>
-                
-                <a href="catalog-en.html" class="inline-block bg-[#d4af37] text-black px-12 py-5 font-black uppercase tracking-widest text-lg hover:bg-[#f3d97d] transition-all transform hover:scale-105">
-                    Open Catalog
-                </a>
-            </div>
-        </main>
+</video>
 
-        <footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40">
-            © 2026 Tomaszek Group Poland
-        </footer>
-    </div>
+</div>
+
+<div class="relative z-10 h-screen flex flex-col justify-between">
+
+<nav class="flex justify-between items-center px-6 py-4 md:px-16 backdrop-blur-md bg-black/20">
+
+<div class="flex items-center space-x-4">
+
+<img src="./img/logo.png" alt="Tomaszek Group Logo" class="h-12 md:h-20">
+
+<span class="text-2xl md:text-5xl font-black uppercase italic tracking-tighter logo-text-gold">
+
+Tomaszek
+
+</span>
+
+</div>
+
+<div class="flex items-center space-x-6 md:space-x-12">
+
+<div class="hidden md:flex space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
+
+<a href="about-en.html" class="hover:text-[#d4af37] transition">About Us</a>
+
+<a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
+
+</div>
+
+<div class="flex space-x-2 text-[10px] font-black border-l border-white/20 pl-6">
+
+<a href="index.html" class="hover:text-[#d4af37] transition" aria-label="Polish version">PL</a>
+
+<span class="opacity-30">|</span>
+
+<a href="index-en.html" class="text-[#d4af37]" aria-label="English version">EN</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<main class="px-6 md:px-16 flex flex-col items-start justify-center flex-grow">
+
+<div class="max-w-4xl">
+
+<p class="text-2xl md:text-5xl font-bold max-w-2xl leading-tight mb-10 border-l-8 border-[#d4af37] pl-8">
+
+PROFESSIONALISM & EXPERIENCE
+
+</p>
+
+<a href="catalog-en.html" class="inline-block bg-[#d4af37] text-black px-12 py-5 font-black uppercase tracking-widest text-lg hover:bg-[#f3d97d] transition-all transform hover:scale-105">
+
+Open Catalog
+
+</a>
+
+</div>
+
+</main>
+
+<footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40">
+
+© 2026 Tomaszek Group Poland
+
+</footer>
+
+</div>
 
 </body>
+
 </html>
