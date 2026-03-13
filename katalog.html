@@ -2,196 +2,201 @@
 <html lang="pl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Katalog Produktów | TOMASZEK GROUP</title>
+    <meta name="description" content="Oficjalny katalog hurtowy Tomaszek Group. Okulary, fejerwerki, zabawki i artykuły sezonowe. Najwyższa jakość w dystrybucji.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Tomaszek, hurtownia, katalog, okulary, fejerwerki, zabawki, dystrybucja">
 
-<title>Katalog | TOMASZEK</title>
+    <link rel="canonical" href="katalog.html">
+    <link rel="alternate" hreflang="pl" href="katalog.html">
+    <link rel="alternate" hreflang="en" href="katalog-en.html">
 
-<meta name="description" content="Katalog produktów Tomaszek Group">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-<link rel="alternate" hreflang="pl" href="katalog.html">
-<link rel="alternate" hreflang="en" href="katalog-en.html">
+    <script src="./js/tailwind.js"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        :root {
+            --gold-light: #f3d97d;
+            --gold-dark: #d4af37;
+            --graphite: #232326;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--graphite);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 35%);
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+        }
 
-<script src="https://cdn.tailwindcss.com"></script>
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-<style>
+        .logo-text-gold {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-:root{
---gold-light:#f3d97d;
---gold-dark:#d4af37;
---graphite:#232326;
-}
+        /* Анимация появления карточек */
+        .category-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all .5s cubic-bezier(.2, 1, .3, 1);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            z-index: 10;
+            display: block; /* Ссылка теперь блок */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp .8s ease forwards;
+        }
 
-body{
-font-family:'Inter',sans-serif;
-background-color:var(--graphite);
-background-image:
-radial-gradient(circle at 0% 0%,rgba(212,175,55,0.15)0%,transparent 35%),
-radial-gradient(circle at 100% 100%,rgba(212,175,55,0.1)0%,transparent 35%);
-color:white;
-margin:0;
-min-height:100vh;
-position:relative;
-}
+        .category-card:nth-child(1) { animation-delay: .1s }
+        .category-card:nth-child(2) { animation-delay: .2s }
+        .category-card:nth-child(3) { animation-delay: .3s }
+        .category-card:nth-child(4) { animation-delay: .4s }
+        .category-card:nth-child(5) { animation-delay: .5s }
+        .category-card:nth-child(6) { animation-delay: .6s }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:0.2;
-pointer-events:none;
-z-index:0;
-}
+        .category-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,.6), 0 0 20px rgba(212,175,55,.2);
+        }
 
-.logo-text-gold{
-background:linear-gradient(to bottom,var(--gold-light),var(--gold-dark));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.6);
+            transition: all .8s ease;
+        }
 
-/* cards */
+        .category-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
 
-.category-card{
-background:rgba(26,26,26,0.8);
-border:1px solid rgba(212,175,55,0.1);
-transition:all .5s cubic-bezier(.2,1,.3,1);
-position:relative;
-overflow:hidden;
-aspect-ratio:1/1;
-z-index:10;
+        .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 60%);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+        }
 
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp .8s ease forwards;
-}
+        .white-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--gold-dark), transparent);
+            opacity: .5;
+        }
 
-.category-card:nth-child(1){animation-delay:.1s}
-.category-card:nth-child(2){animation-delay:.2s}
-.category-card:nth-child(3){animation-delay:.3s}
-.category-card:nth-child(4){animation-delay:.4s}
-.category-card:nth-child(5){animation-delay:.5s}
-.category-card:nth-child(6){animation-delay:.6s}
-
-.category-card:hover{
-border-color:var(--gold-dark);
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 40px rgba(0,0,0,.6),0 0 20px rgba(212,175,55,.2);
-}
-
-.category-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center;
-transition:all .8s ease;
-filter:brightness(.7);
-}
-
-.category-card:hover img{
-transform:scale(1.1);
-filter:brightness(1);
-opacity:.6;
-}
-
-.card-overlay{
-background:linear-gradient(to top,rgba(0,0,0,.9)0%,transparent 70%);
-position:absolute;
-inset:0;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-padding:25px;
-}
-
-.white-line{
-width:100%;
-height:1px;
-background:white;
-opacity:.3;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
-
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 
-<body class="p-6 md:p-16">
+<body class="p-6 md:p-16 max-w-7xl mx-auto">
 
-<nav class="flex justify-between items-center mb-16 border-b border-white/10 pb-6 relative z-20">
+    <nav class="flex justify-between items-center mb-12 border-b border-white/10 pb-6 relative z-20">
+        <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-50 hover:opacity-100 hover:text-[#d4af37] transition flex items-center">
+            <span class="mr-2">←</span> Powrót do menu
+        </a>
+        <div class="flex space-x-4 text-[11px] font-black italic">
+            <span class="text-[#d4af37]">PL</span>
+            <span class="opacity-10">|</span>
+            <a href="katalog-en.html" class="hover:text-[#d4af37] transition opacity-40">EN</a>
+        </div>
+    </nav>
 
-<a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition">
-← Powrót
-</a>
+    <header class="mb-16 relative z-20">
+        <h1 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4 logo-text-gold">
+            KATALOG
+        </h1>
+        <div class="white-line"></div>
+        <p class="mt-4 text-[10px] uppercase tracking-[0.5em] text-white/40">
+            Profesjonalizm oparty na doświadczeniu
+        </p>
+    </header>
 
-<div class="flex space-x-4 text-[11px] font-black italic">
+    <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-20">
 
-<span class="text-[#d4af37]">PL</span>
+        <a href="okulary.html" class="category-card group">
+            <img src="./img/okulary.jpg" alt="Hurtownia Okularów - Tomaszek">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Okulary</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-<span class="opacity-10">|</span>
+        <a href="fejerwerki.html" class="category-card group">
+            <img src="./img/fejerwerki.jpg" alt="Import Fajerwerków">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Fejerwerki</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-<a href="katalog-en.html" class="hover:text-[#d4af37] transition opacity-40">
-EN
-</a>
+        <a href="kaski.html" class="category-card group">
+            <img src="./img/kaski.jpg" alt="Gogle i Kaski narciarskie">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Gogle / Kaski</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-</div>
+        <a href="zabawki.html" class="category-card group">
+            <img src="./img/zabawki.jpg" alt="Hurtownia Zabawek">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Zabawki</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-</nav>
+        <a href="plazowe.html" class="category-card group">
+            <img src="./img/plazowe.jpg" alt="Artykuły Plażowe">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Art. Plażowe</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-<header class="mb-20 inline-block relative z-20">
+        <a href="znicze.html" class="category-card group">
+            <img src="./img/znicze.jpg" alt="Produkcja Zniczy">
+            <div class="card-overlay">
+                <h3 class="text-2xl font-black uppercase italic group-hover:text-[#d4af37] transition">Znicze / Wkłady</h3>
+                <span class="text-[9px] uppercase tracking-widest opacity-40 mt-2">Zobacz produkty →</span>
+            </div>
+        </a>
 
-<h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-2 pr-6 logo-text-gold">
-KATALOG
-</h1>
+    </main>
 
-<div class="white-line"></div>
-
-</header>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative z-20">
-
-<div class="category-card">
-<img src="./img/okulary.jpg" alt="Okulary">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Okulary</h3></div>
-</div>
-
-<div class="category-card">
-<img src="./img/fejerwerki.jpg" alt="Fejerwerki">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Fejerwerki</h3></div>
-</div>
-
-<div class="category-card">
-<img src="./img/kaski.jpg" alt="Gogle i kaski">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Gogle / Kaski</h3></div>
-</div>
-
-<div class="category-card">
-<img src="./img/zabawki.jpg" alt="Zabawki">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Zabawki</h3></div>
-</div>
-
-<div class="category-card">
-<img src="./img/plazowe.jpg" alt="Artykuły plażowe">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Art. Plażowe</h3></div>
-</div>
-
-<div class="category-card">
-<img src="./img/znicze.jpg" alt="Znicze i wkłady">
-<div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Znicze / Wkłady</h3></div>
-</div>
-
-</div>
+    <footer class="mt-20 pb-10 text-center opacity-20 text-[10px] uppercase tracking-widest relative z-20">
+        &copy; 2026 TOMASZEK GROUP. Wszelkie prawa zastrzeżone.
+    </footer>
 
 </body>
 </html>
