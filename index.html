@@ -2,8 +2,8 @@
 <html lang="pl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <title>TOMASZEK | Profesjonalizm i Doświadczenie</title>
@@ -23,7 +23,7 @@
 
 <style>
 
-:root{
+:root {
 --gold-light:#f3d97d;
 --gold-dark:#d4af37;
 --dark-bg:#1e1e26;
@@ -35,6 +35,8 @@ background:var(--dark-bg);
 margin:0;
 overflow-x:hidden;
 }
+
+/* видео фон */
 
 .video-container{
 position:fixed;
@@ -48,14 +50,18 @@ background:var(--dark-bg);
 width:100%;
 height:100%;
 object-fit:cover;
-opacity:0.5;
+opacity:.6;
 }
+
+/* золотой текст */
 
 .logo-text-gold{
 background:linear-gradient(to bottom,var(--gold-light),var(--gold-dark));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
+
+/* loader */
 
 #loader{
 position:fixed;
@@ -72,8 +78,8 @@ transition:opacity .6s ease;
 color:#d4af37;
 font-size:24px;
 letter-spacing:4px;
-animation:pulse 1.5s infinite;
 font-weight:900;
+animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
@@ -81,38 +87,15 @@ font-weight:900;
 50%{opacity:1}
 }
 
+/* navbar */
+
 .glass-nav{
-backdrop-filter:blur(15px);
-background:rgba(0,0,0,.5);
-border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-#mobile-menu{
-transition:all .3s ease-in-out;
-max-height:0;
-overflow:hidden;
-}
-
-#mobile-menu.open{
-max-height:200px;
-padding:20px 0;
-}
-
-/* Mobile video fallback */
-
-@media(max-width:768px){
-
-.video-container video{
-display:none;
-}
-
-.video-container{
-background:url('./img/fallback.jpg') center/cover no-repeat;
-}
-
+backdrop-filter:blur(10px);
+background:rgba(0,0,0,.3);
 }
 
 </style>
+
 </head>
 
 <body>
@@ -123,7 +106,7 @@ background:url('./img/fallback.jpg') center/cover no-repeat;
 
 <div class="video-container">
 
-<video autoplay muted loop playsinline preload="metadata" poster="./img/fallback.jpg">
+<video autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="./img/fallback.jpg">
 <source src="./video/promo.mp4" type="video/mp4">
 </video>
 
@@ -131,66 +114,25 @@ background:url('./img/fallback.jpg') center/cover no-repeat;
 
 <div class="relative z-10 h-screen flex flex-col justify-between text-white">
 
-<nav class="glass-nav relative z-[100]">
+<nav class="glass-nav flex justify-between items-center px-6 py-4 md:px-16">
 
-<div class="flex justify-between items-center px-4 md:px-16 py-4">
+<div class="flex items-center space-x-4">
 
-<div class="flex items-center space-x-2 md:space-x-4">
+<img src="./img/logo.png" alt="Logo" class="h-10 md:h-16">
 
-<img src="./img/logo.png" alt="Logo Tomaszek" class="h-8 md:h-16">
-
-<span class="text-xl md:text-5xl font-black uppercase italic logo-text-gold tracking-tighter">
+<span class="text-2xl md:text-5xl font-black uppercase italic logo-text-gold">
 Tomaszek
 </span>
 
 </div>
 
-<div class="flex items-center space-x-4 md:space-x-12">
-
-<div class="flex space-x-2 text-[11px] md:text-[13px] font-black italic bg-white/5 px-3 py-1 rounded-full border border-white/10">
-
-<span class="text-[#d4af37]">PL</span>
-<span class="opacity-20">|</span>
-
-<a href="index-en.html" class="opacity-40 hover:opacity-100 transition">
-EN
-</a>
-
-</div>
-
-<div class="hidden md:flex items-center space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
-
-<a href="o-firmie.html" class="hover:text-[#d4af37] transition">
-O firmie
-</a>
-
-<a href="kontakt.html" class="hover:text-[#d4af37] transition">
-Kontakt
-</a>
-
-</div>
-
-<button
-id="menu-btn"
-class="md:hidden text-white focus:outline-none"
-aria-label="Menu"
-aria-expanded="false">
-
-<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M4 6h16M4 12h16m-7 6h7"></path>
-
-</svg>
-
+<button id="menu-btn" class="md:hidden text-white text-3xl">
+☰
 </button>
 
-</div>
-</div>
+<div id="menu" class="hidden md:flex items-center space-x-12">
 
-<div id="mobile-menu" class="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/5">
-
-<div class="flex flex-col items-center space-y-6 uppercase text-sm font-bold tracking-widest">
+<div class="uppercase text-[11px] font-bold tracking-[0.2em] flex space-x-10">
 
 <a href="o-firmie.html" class="hover:text-[#d4af37] transition">
 O firmie
@@ -198,6 +140,18 @@ O firmie
 
 <a href="kontakt.html" class="hover:text-[#d4af37] transition">
 Kontakt
+</a>
+
+</div>
+
+<div class="flex space-x-3 text-[10px] font-black border-l border-white/20 pl-6">
+
+<span class="text-[#d4af37]">PL</span>
+
+<span class="opacity-30">|</span>
+
+<a href="index-en.html" class="opacity-50 hover:opacity-100">
+EN
 </a>
 
 </div>
@@ -210,14 +164,15 @@ Kontakt
 
 <div class="max-w-4xl">
 
-<h1 class="text-3xl md:text-7xl font-black max-w-3xl leading-tight mb-10 border-l-[10px] md:border-l-[15px] border-[#d4af37] pl-6 md:pl-10 uppercase italic">
+<h1 class="text-3xl md:text-6xl font-black max-w-3xl leading-tight mb-10 border-l-8 border-[#d4af37] pl-8 uppercase italic">
 
-PROFESJONALIZM<br>I DOŚWIADCZENIE
+PROFESJONALIZM<br>
+I DOŚWIADCZENIE
 
 </h1>
 
 <a href="katalog.html"
-class="inline-block bg-[#d4af37] text-black px-10 md:px-14 py-4 md:py-6 font-black uppercase tracking-widest text-base md:text-xl hover:bg-[#f3d97d] transition transform hover:scale-105 shadow-2xl">
+class="inline-block bg-[#d4af37] text-black px-12 py-5 font-black uppercase tracking-widest text-lg hover:bg-[#f3d97d] transition transform hover:scale-105">
 
 Otwórz katalog
 
@@ -227,13 +182,9 @@ Otwórz katalog
 
 </main>
 
-<footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40 flex justify-between">
+<footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40">
 
-<span>© 2026 TOMASZEK GROUP POLAND</span>
-
-<span class="hidden md:inline italic text-right">
-Excellence in Distribution
-</span>
+© 2026 TOMASZEK GROUP POLAND
 
 </footer>
 
@@ -256,28 +207,11 @@ loader.style.display="none"
 })
 
 const btn=document.getElementById("menu-btn")
-const mobileMenu=document.getElementById("mobile-menu")
+const menu=document.getElementById("menu")
 
 btn.addEventListener("click",()=>{
 
-mobileMenu.classList.toggle("open")
-
-btn.setAttribute(
-"aria-expanded",
-mobileMenu.classList.contains("open")
-)
-
-})
-
-mobileMenu.querySelectorAll("a").forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-mobileMenu.classList.remove("open")
-
-btn.setAttribute("aria-expanded","false")
-
-})
+menu.classList.toggle("hidden")
 
 })
 
