@@ -1,73 +1,84 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>TOMASZEK | Katalog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog | TOMASZEK</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark-bg: #1e1e26; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: white; margin: 0; }
-
-        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; }
+        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --graphite: #232326; }
         
-        .category-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
-        .category-card:hover {
-            border-color: var(--gold);
-            background: rgba(255,255,255,0.07);
-            transform: translateY(-5px);
+        body { 
+            font-family: 'Inter', sans-serif; background-color: var(--graphite);
+            background-image: radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 35%), 
+                              radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 35%);
+            color: white; margin: 0; min-height: 100vh; position: relative;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, #f3d97d, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body::before {
+            content: ""; position: fixed; inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.2; pointer-events: none; z-index: 0;
         }
 
-        .lang-capsule {
-            display: flex; align-items: center; background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 99px;
-            padding: 4px 12px; font-size: 11px; font-weight: 900;
+        .logo-text-gold {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+
+        .category-card { 
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative; overflow: hidden; aspect-ratio: 1/1; z-index: 10;
+        }
+        
+        .category-card:hover { 
+            border-color: var(--gold-dark);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Это правило само подгонит любое фото под квадрат */
+        .category-card img { 
+            width: 100%; height: 100%; object-fit: cover; object-position: center;
+            transition: all 0.8s ease; filter: brightness(0.7); 
+        }
+
+        .category-card:hover img { transform: scale(1.1); filter: brightness(1); opacity: 0.6; }
+
+        .card-overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 70%); 
+            position: absolute; inset: 0; display: flex; flex-direction: column; 
+            justify-content: flex-end; padding: 25px; 
+        }
+
+        .white-line { width: 100%; height: 1px; background: white; opacity: 0.3; }
     </style>
 </head>
-
-<body>
-
-    <nav class="glass-nav">
-        <div class="flex justify-between items-center px-4 md:px-16 py-4">
-            <a href="index.html" class="flex items-center space-x-3">
-                <img src="./img/logo.png" alt="Logo" class="h-8 md:h-12">
-                <span class="text-xl md:text-3xl font-black uppercase italic gold-gradient-text">Tomaszek</span>
-            </a>
-
-            <div class="flex items-center space-x-6">
-                <div class="lang-capsule italic">
-                    <span class="text-[#d4af37]">PL</span>
-                    <span class="mx-2 opacity-20">|</span>
-                    <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
-                </div>
-                <a href="index.html" class="text-[10px] uppercase font-bold tracking-widest opacity-60 hover:opacity-100">Powrót</a>
-            </div>
+<body class="p-6 md:p-16">
+    <nav class="flex justify-between items-center mb-16 border-b border-white/10 pb-6 relative z-20">
+        <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition">← Powrót</a>
+        <div class="flex space-x-4 text-[11px] font-black italic">
+            <span class="text-[#d4af37]">PL</span>
+            <span class="opacity-10">|</span>
+            <a href="katalog-en.html" class="hover:text-[#d4af37] transition opacity-40">EN</a>
         </div>
     </nav>
 
-    <header class="py-16 px-6 md:px-16 border-b border-white/5 bg-black/20">
-        <h1 class="text-4xl md:text-6xl font-black uppercase italic mb-4">Katalog <span class="text-[#d4af37]">Produktów</span></h1>
-        <p class="text-sm md:text-base opacity-50 max-w-2xl uppercase tracking-widest">Profesjonalne rozwiązania dla Twojego biznesu. Wybierz kategorię poniżej.</p>
+    <header class="mb-20 inline-block relative z-20">
+        <h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-2 pr-6 logo-text-gold">KATALOG</h1>
+        <div class="white-line"></div>
     </header>
 
-    <main class="p-6 md:p-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="category-card group relative">
-                <div class="aspect-video bg-zinc-800 overflow-hidden">
-                    <img src="./img/cat1.jpg" alt="Category"
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative z-20">
+        <div class="category-card"><img src="./img/okulary.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Okulary</h3></div></div>
+        <div class="category-card"><img src="./img/fejerwerki.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Fejerwerki</h3></div></div>
+        <div class="category-card"><img src="./img/kaski.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Gogle / Kaski</h3></div></div>
+        <div class="category-card"><img src="./img/zabawki.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Zabawki</h3></div></div>
+        <div class="category-card"><img src="./img/plazowe.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Art. Plażowe</h3></div></div>
+        <div class="category-card"><img src="./img/znicze.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Znicze / Wkłady</h3></div></div>
+    </div>
+</body>
+</html>
