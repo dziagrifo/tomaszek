@@ -9,8 +9,7 @@
     <meta name="description" content="Tomaszek Group – lider profesjonalnej dystrybucji.">
     <link rel="alternate" hreflang="pl" href="index.html">
     <link rel="alternate" hreflang="en" href="index-en.html">
-    <link rel="canonical" href="index.html">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -21,116 +20,37 @@
         body { font-family: 'Inter', sans-serif; background: var(--dark-bg); margin: 0; overflow: hidden; }
 
         .video-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            background: var(--dark-bg);
+            position: fixed; inset: 0; z-index: 0; overflow: hidden; background: var(--dark-bg);
         }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-        }
+        .video-container video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
 
         .logo-text-gold {
             background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: #1e1e26;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: opacity 0.6s ease;
+        /* Красивое полноэкранное меню для мобилок */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        .loader-text { color: #d4af37; font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
-        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-
-        .glass-nav { backdrop-filter: blur(10px); background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* Кнопка языка (капсула) */
+        .lang-capsule {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.3);
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
 
 <body>
 
-    <div id="loader"><div class="loader-text uppercase italic">Tomaszek</div></div>
-
     <div class="video-container">
-        <video autoplay muted loop playsinline poster="./img/fallback.jpg">
-            <source src="./video/promo.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="relative z-10 h-screen flex flex-col justify-between text-white">
-        
-        <nav class="glass-nav flex justify-between items-center px-4 md:px-16 py-4">
-            
-            <div class="flex items-center space-x-3 md:space-x-4">
-                <img src="./img/logo.png" alt="Logo" class="h-10 md:h-16">
-                <span class="text-xl md:text-5xl font-black uppercase italic logo-text-gold">Tomaszek</span>
-            </div>
-
-            <div class="flex items-center space-x-4 md:space-x-12">
-                
-                <div class="flex space-x-2 text-[11px] md:text-[13px] font-black italic bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
-                    <span class="text-[#d4af37]">PL</span>
-                    <span class="opacity-20">|</span>
-                    <a href="index-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
-                </div>
-
-                <div class="hidden md:flex items-center space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
-                    <a href="o-firmie.html" class="hover:text-[#d4af37] transition">O firmie</a>
-                    <a href="kontakt.html" class="hover:text-[#d4af37] transition">Kontakt</a>
-                </div>
-
-                <button id="menu-btn" class="md:hidden text-white text-2xl p-1">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-
-        <div id="mobile-menu" class="hidden absolute top-[70px] left-0 w-full bg-black/90 backdrop-blur-xl z-50 flex flex-col items-center py-10 space-y-6 uppercase text-sm tracking-widest border-b border-gold-dark/20">
-            <a href="o-firmie.html" class="hover:text-[#d4af37]">O firmie</a>
-            <a href="kontakt.html" class="hover:text-[#d4af37]">Kontakt</a>
-        </div>
-
-        <main class="px-6 md:px-16 flex flex-col justify-center flex-grow">
-            <div class="max-w-4xl">
-                <p class="text-3xl md:text-7xl font-black max-w-3xl leading-tight mb-10 border-l-[10px] md:border-l-[15px] border-[#d4af37] pl-6 md:pl-10 uppercase italic">
-                    PROFESJONALIZM<br>I DOŚWIADCZENIE
-                </p>
-                <a href="katalog.html" class="inline-block bg-[#d4af37] text-black px-10 md:px-14 py-4 md:py-6 font-black uppercase tracking-widest text-base md:text-xl hover:bg-[#f3d97d] transition transform hover:scale-105 shadow-xl shadow-black/50">
-                    Otwórz katalog
-                </a>
-            </div>
-        </main>
-
-        <footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40 flex justify-between">
-            <span>© 2026 TOMASZEK GROUP POLAND</span>
-            <span class="hidden md:inline italic">Excellence in Distribution</span>
-        </footer>
-    </div>
-
-    <script>
-        window.addEventListener("load", () => {
-            const l = document.getElementById("loader");
-            l.style.opacity = "0";
-            setTimeout(() => l.style.display = "none", 600);
-        });
-
-        const btn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        
-        btn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    </script>
-</body>
-</html>
