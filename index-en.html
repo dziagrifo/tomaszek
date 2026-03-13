@@ -1,186 +1,117 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>TOMASZEK | Professionalism & Experience</title>
+    <meta name="description" content="Tomaszek Group – leader in professional distribution. Quality and experience you can trust.">
+    
+    <link rel="alternate" hreflang="pl" href="index.html">
+    <link rel="alternate" hreflang="en" href="index-en.html">
+    <link rel="canonical" href="index-en.html">
 
-<title>TOMASZEK | Professional Distribution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-<meta name="description" content="Tomaszek Group – professional distribution and product catalog.">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="alternate" hreflang="pl" href="index.html">
-<link rel="alternate" hreflang="en" href="index-en.html">
+    <style>
+        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --dark-bg: #1e1e26; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); margin: 0; overflow-x: hidden; }
 
-<link rel="icon" href="./img/favicon.png">
+        .video-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: var(--dark-bg);
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        .logo-text-gold {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+        #loader {
+            position: fixed; inset: 0; background: #1e1e26;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 999; transition: opacity 0.6s ease;
+        }
 
-<script src="https://cdn.tailwindcss.com"></script>
+        .loader-text { color: #d4af37; font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
+        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 
-<style>
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-:root{
---gold-light:#f3d97d;
---gold-dark:#d4af37;
---dark-bg:#1e1e26;
-}
-
-body{
-font-family:'Inter',sans-serif;
-background:var(--dark-bg);
-margin:0;
-overflow:hidden;
-}
-
-.video-container{
-position:fixed;
-inset:0;
-z-index:-1;
-overflow:hidden;
-}
-
-.video-container video{
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0.6;
-}
-
-.logo-text-gold{
-background:linear-gradient(to bottom,var(--gold-light),var(--gold-dark));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* loader */
-
-#loader{
-position:fixed;
-inset:0;
-background:#1e1e26;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-transition:opacity 0.6s ease;
-}
-
-.loader-text{
-color:#d4af37;
-font-size:24px;
-letter-spacing:4px;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:0.2}
-50%{opacity:1}
-100%{opacity:0.2}
-}
-
-</style>
-
+        /* Mobile menu styles */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 200px;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="loader">
-<div class="loader-text">TOMASZEK</div>
-</div>
+    <div id="loader"><div class="loader-text uppercase italic">Tomaszek</div></div>
 
-<div class="video-container">
-<video autoplay muted loop playsinline>
-<source src="./video/promo.mp4" type="video/mp4">
-</video>
-</div>
+    <div class="video-container">
+        <video autoplay muted loop playsinline poster="./img/fallback.jpg">
+            <source src="./video/promo.mp4" type="video/mp4">
+        </video>
+    </div>
 
-<div class="relative z-10 h-screen flex flex-col justify-between text-white">
+    <div class="relative z-10 h-screen flex flex-col justify-between text-white">
+        
+        <nav class="glass-nav relative z-[100]">
+            <div class="flex justify-between items-center px-4 md:px-16 py-4">
+                
+                <div class="flex items-center space-x-2 md:space-x-4">
+                    <img src="./img/logo.png" alt="Logo" class="h-8 md:h-16">
+                    <span class="text-xl md:text-5xl font-black uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
+                </div>
 
-<nav class="flex justify-between items-center px-6 py-4 md:px-16 backdrop-blur-md bg-black/20">
+                <div class="flex items-center space-x-4 md:space-x-12">
+                    
+                    <div class="flex space-x-2 text-[11px] md:text-[13px] font-black italic bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                        <a href="index.html" class="opacity-40 hover:opacity-100 transition">PL</a>
+                        <span class="opacity-20">|</span>
+                        <span class="text-[#d4af37]">EN</span>
+                    </div>
 
-<div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
+                        <a href="about-us-en.html" class="hover:text-[#d4af37] transition">About Us</a>
+                        <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
+                    </div>
 
-<img src="./img/logo.png" alt="Tomaszek Group Logo" class="h-12 md:h-20">
+                    <button id="menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Menu">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
 
-<span class="text-2xl md:text-5xl font-black uppercase italic logo-text-gold">
-Tomaszek
-</span>
+            <div id="mobile-menu" class="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/5">
+                <div class="flex flex-col items-center space-y-6 uppercase text-sm font-bold tracking-widest">
+                    <a href="about-us-en.html" class="hover:text-[#d4af37] transition">About Us</a>
+                    <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
+                </div>
+            </div>
+        </nav>
 
-</div>
-
-<button id="menu-btn" class="md:hidden text-white text-2xl">
-☰
-</button>
-
-<div id="menu" class="hidden md:flex items-center space-x-12">
-
-<div class="uppercase text-[11px] font-bold tracking-[0.2em] flex space-x-10">
-
-<a href="about-en.html" class="hover:text-[#d4af37] transition">About Us</a>
-
-<a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
-
-</div>
-
-<div class="flex space-x-2 text-[10px] font-black border-l border-white/20 pl-6">
-
-<a href="index.html" class="hover:text-[#d4af37] transition">PL</a>
-
-<span class="opacity-30">|</span>
-
-<a href="index-en.html" class="text-[#d4af37]">EN</a>
-
-</div>
-
-</div>
-
-</nav>
-
-<main class="px-6 md:px-16 flex flex-col justify-center flex-grow">
-
-<div class="max-w-4xl">
-
-<p class="text-2xl md:text-5xl font-bold max-w-2xl leading-tight mb-10 border-l-8 border-[#d4af37] pl-8">
-PROFESSIONALISM & EXPERIENCE
-</p>
-
-<a href="catalog-en.html" class="inline-block bg-[#d4af37] text-black px-12 py-5 font-black uppercase tracking-widest text-lg hover:bg-[#f3d97d] transition transform hover:scale-105">
-Open catalog
-</a>
-
-</div>
-
-</main>
-
-<footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40">
-
-© 2026 Tomaszek Group Poland
-
-</footer>
-
-</div>
-
-<script>
-
-window.addEventListener("load",()=>{
-document.getElementById("loader").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},600);
-});
-
-const btn=document.getElementById("menu-btn");
-const menu=document.getElementById("menu");
-
-btn.addEventListener("click",()=>{
-menu.classList.toggle("hidden");
-});
-
-</script>
-
-</body>
-</html>
+        <main
