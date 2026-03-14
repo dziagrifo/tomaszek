@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     <title>Catalog | Products</title>
-    <meta name="description" content="Product catalog: toys, sunglasses, and seasonal goods.">
+    <meta name="description" content="Product catalog: toys, sunglasses, seasonal articles.">
     
     <link rel="canonical" href="https://www.tomaszek.pl/katalog-en.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
@@ -25,12 +25,13 @@
         .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-line { height: 1px; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%); width: 100%; }
         
+        /* Линия под заголовком */
         .separator-line { width: 100%; height: 1px; background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 70%, transparent 100%); margin-top: 1rem; }
 
         .btn-back { color: white; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; transition: all 0.4s ease; }
         .btn-back:hover { color: var(--gold-light); }
 
-        /* SEARCH BAR STYLE */
+        /* Стиль Поиска в навигации */
         .search-container { position: relative; margin-right: 20px; }
         .search-input {
             background: rgba(255, 255, 255, 0.05);
@@ -98,7 +99,7 @@
     </header>
 
     <main id="catalogGrid" class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative z-20 pb-24">
-        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses glasses sun summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
+        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses sun glasses summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
         <a href="fejerwerki-en.html" class="category-card" data-keywords="fireworks fire celebration pyrotechnics"><img src="./img/fejerwerki.jpg" alt="Fireworks"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div></a>
         <a href="kaski-en.html" class="category-card" data-keywords="helmets goggles ski winter sport"><img src="./img/kaski.jpg" alt="Helmets"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Goggles / Helmets</h3></div></a>
         <a href="zabawki-en.html" class="category-card" data-keywords="toys children kids gift present"><img src="./img/zabawki.jpg" alt="Toys"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div></a>
@@ -119,7 +120,6 @@
             setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
         });
 
-        // SEARCH FUNCTION
         const runSearch = (query) => {
             const filter = query.toLowerCase();
             const cards = document.querySelectorAll('.category-card');
@@ -134,12 +134,8 @@
             });
         };
 
-        // Listeners for both search bars
-        const sInput = document.getElementById('searchInput');
-        const mInput = document.getElementById('mobileSearchInput');
-
-        if(sInput) sInput.addEventListener('input', (e) => runSearch(e.target.value));
-        if(mInput) mInput.addEventListener('input', (e) => runSearch(e.target.value));
+        document.getElementById('searchInput').addEventListener('input', (e) => runSearch(e.target.value));
+        document.getElementById('mobileSearchInput').addEventListener('input', (e) => runSearch(e.target.value));
     </script>
 </body>
 </html>
