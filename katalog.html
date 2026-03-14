@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -7,15 +7,13 @@
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:;">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
+    
     <title>Katalog Produktów | Tomaszek Group</title>
-    <meta name="description" content="Przeglądaj nasz profesjonalny katalog produktów: zabawki, artykuły sezonowe, okulary. Wysoka jakość dla Twojego biznesu.">
+    <meta name="description" content="Profesjonalny katalog produktów Tomaszek Group: zabawki, okulary, artykuły sezonowe.">
     
     <link rel="canonical" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/katalog-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://www.tomaszek.pl/katalog.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,17 +22,13 @@
 
     <style>
         :root { --gold: #d4af37; --gold-light: #f3d97d; --dark: #1e1e26; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; margin: 0; }
-        
-        .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); sticky top: 0; z-index: 100; }
-        
-        .search-input { background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .search-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.07); outline: none; box-shadow: 0 0 20px rgba(212, 175, 55, 0.1); }
-        
-        .product-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: all 0.5s ease; overflow: hidden; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(255,255,255,0.05); }
-        
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; margin: 0; overflow-x: hidden; }
+        .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; }
+        .search-input { background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s ease; }
+        .search-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.07); outline: none; }
+        .product-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         #loader { position: fixed; inset: 0; background: #1e1e26; display: flex; align-items: center; justify-content: center; z-index: 999; transition: opacity 0.6s ease; }
         .loader-text { color: var(--gold); font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
         @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
@@ -45,52 +39,102 @@
     <div id="loader"><div class="loader-text uppercase italic">Tomaszek</div></div>
 
     <nav class="glass-nav">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 md:px-16 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <img src="./img/logo.png" alt="Logo" class="h-10">
-                <span class="text-2xl font-900 uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
+                <img src="./img/logo.png" alt="Logo" class="h-8 md:h-12">
+                <span class="text-xl md:text-3xl font-900 uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
             </div>
-            <div class="flex items-center space-x-8">
-                <div class="flex space-x-2 text-[11px] font-black italic bg-white/5 px-3 py-1 rounded-full border border-white/10">
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-2 text-[10px] md:text-[12px] font-black italic bg-white/5 px-3 py-1 rounded-full border border-white/10">
                     <span class="text-[#d4af37]">PL</span>
                     <span class="opacity-20">|</span>
                     <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
                 </div>
-                <a href="index.html" class="uppercase text-[11px] font-bold tracking-widest opacity-60 hover:opacity-100 transition">Home</a>
+                <a href="index.html" class="uppercase text-[10px] font-bold tracking-widest opacity-60 hover:opacity-100 transition">Home</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 py-12">
+    <main class="max-w-7xl mx-auto px-4 md:px-16 py-12">
         <div class="mb-16">
-            <h1 class="text-6xl md:text-8xl font-900 italic uppercase mb-6">Katalog</h1>
+            <h1 class="text-5xl md:text-8xl font-900 italic uppercase mb-6 leading-none">Katalog<br><span class="logo-text-gold text-3xl md:text-5xl">Produktów</span></h1>
             <div class="h-1 w-32 bg-[#d4af37] mb-8"></div>
-            
             <div class="relative max-w-2xl">
-                <input type="text" id="searchInput" placeholder="Szukaj kategorii..." class="search-input w-full p-6 text-white text-lg font-light tracking-wide italic">
-                <div class="absolute right-6 top-1/2 -translate-y-1/2 opacity-30">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
+                <input type="text" id="searchInput" placeholder="Szukaj kategorii..." class="search-input w-full p-5 text-white text-lg font-light italic">
             </div>
         </div>
 
-        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="product-card group p-8 relative cursor-pointer" data-name="zabawek zabawki toys">
-                <p class="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-2">Category 01</p>
-                <h3 class="text-3xl font-900 uppercase italic mb-6 group-hover:text-[#d4af37] transition-colors">Zabawki</h3>
+        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="product-card group p-6 relative" data-name="zabawki toys">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">01</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Zabawki</h3>
                 <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
-                    <img src="./img/toys.jpg" alt="Zabawki" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <img src="./img/toys.jpg" alt="Zabawki" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
                 </div>
-                <a href="produkty-zabawki.html" class="text-[11px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1">Zobacz produkty</a>
+                <a href="kategoria-zabawki.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
             </div>
 
-            <div class="product-card group p-8 relative cursor-pointer" data-name="okulary sun glasses">
-                <p class="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-2">Category 02</p>
-                <h3 class="text-3xl font-900 uppercase italic mb-6 group-hover:text-[#d4af37] transition-colors">Okulary</h3>
+            <div class="product-card group p-6 relative" data-name="okulary sun glasses">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">02</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Okulary</h3>
                 <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
-                    <img src="./img/glasses.jpg" alt="Okulary" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <img src="./img/glasses.jpg" alt="Okulary" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
                 </div>
-                <a href="produkty-okulary.html" class="text-[11px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1">Zobacz produkty</a>
+                <a href="kategoria-okulary.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="sezonowe seasonal">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">03</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Sezonowe</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/seasonal.jpg" alt="Sezonowe" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-sezonowe.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="plaża beach akcesoria">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">04</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Plaża</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/beach.jpg" alt="Plaża" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-plaza.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="sport fitness">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">05</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Sport</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/sport.jpg" alt="Sport" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-sport.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="ogród garden">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">06</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Ogród</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/garden.jpg" alt="Ogród" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-ogrod.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="upominki gifts">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">07</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Upominki</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/gifts.jpg" alt="Upominki" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-upominki.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
+            </div>
+
+            <div class="product-card group p-6 relative" data-name="nowości news">
+                <p class="text-[9px] uppercase tracking-[0.4em] opacity-40 mb-2">08</p>
+                <h3 class="text-2xl font-900 uppercase italic mb-4 group-hover:text-[#d4af37] transition">Nowości</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/new.jpg" alt="Nowości" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                </div>
+                <a href="kategoria-nowosci.html" class="text-[10px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1 inline-block">Zobacz więcej</a>
             </div>
         </div>
     </main>
