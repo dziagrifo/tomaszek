@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>TOMASZEK | Professionalism & Experience</title>
+    
+    <title>Product Catalog | TOMASZEK GROUP - Global Distribution</title>
+    <meta name="description" content="Explore the official TOMASZEK GROUP product catalog. High-quality toys, sunglasses, fireworks, and seasonal goods. Professional distribution worldwide.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tomaszek.pl/katalog-en.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,152 +18,148 @@
 
     <style>
         :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --dark-bg: #1e1e26; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); margin: 0; overflow: hidden; }
-
-        .video-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            background: var(--dark-bg);
-        }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-        }
-
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; }
+        
         .logo-text-gold {
             background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        #loader {
-            position: fixed; inset: 0; background: #1e1e26;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 999; transition: opacity 0.6s ease;
+        /* Nav line with soft fading on both ends */
+        .nav-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+            width: 100%;
         }
 
-        .loader-text { color: #d4af37; font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
-        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-
-        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
-
-        /* Style for the lang capsule */
-        .lang-capsule {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 99px;
-            padding: 4px 12px;
-            font-size: 11px;
+        /* Bold White Back Button */
+        .btn-back {
+            color: white;
             font-weight: 900;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 11px;
+            transition: all 0.4s ease;
         }
-        .lang-capsule:hover {
-            border-color: var(--gold-dark);
-            background: rgba(255, 255, 255, 0.12);
+        .btn-back:hover {
+            color: var(--gold-light);
+            letter-spacing: 0.3em;
         }
 
-        #mobile-menu {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.9);
+        .lang-capsule {
+            display: flex; align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px; padding: 4px 12px;
+            font-size: 11px; font-weight: 900;
         }
-        #mobile-menu.open {
-            max-height: 250px;
-            padding: 30px 0;
+
+        .catalog-container { max-width: 1280px; margin: 0 auto; }
+
+        /* Separator line fading to the right */
+        .separator-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 70%, transparent 100%);
+            margin-top: 1rem;
         }
+
+        /* Category Cards */
+        .category-card { 
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative; overflow: hidden; aspect-ratio: 1/1; display: block;
+        }
+        .category-card:hover { border-color: var(--gold-dark); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; filter: brightness(0.6); }
+        .category-card:hover img { transform: scale(1.1); filter: brightness(0.9); }
+        .card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 25px; }
+
+        #loader { position: fixed; inset: 0; background: #1e1e26; display: flex; align-items: center; justify-content: center; z-index: 999; transition: opacity 0.6s ease; }
     </style>
 </head>
 
-<body>
+<body class="px-6">
 
-    <div id="loader"><div class="loader-text uppercase italic">Tomaszek</div></div>
-
-    <div class="video-container">
-        <video autoplay muted loop playsinline poster="./img/fallback.jpg">
-            <source src="./video/promo.mp4" type="video/mp4">
-        </video>
+    <div id="loader">
+        <div class="text-[#d4af37] text-xl font-900 uppercase italic tracking-[4px] animate-pulse">Tomaszek</div>
     </div>
 
-    <div class="relative z-10 h-screen flex flex-col justify-between text-white">
+    <nav class="max-w-7xl mx-auto relative z-20">
+        <div class="flex justify-between items-center py-8">
+            <a href="index-en.html" class="btn-back">
+                ← <span class="ml-2">Back</span>
+            </a>
+            
+            <div class="lang-capsule italic text-white/40">
+                <a href="katalog.html" class="hover:text-white transition">PL</a>
+                <span class="mx-2 opacity-20">|</span>
+                <span class="text-[#d4af37]">EN</span>
+            </div>
+        </div>
+        <div class="nav-line"></div>
+    </nav>
+
+    <header class="catalog-container mt-16 mb-12 relative z-20">
+        <h1 class="text-4xl md:text-5xl font-black uppercase italic tracking-tighter logo-text-gold">Catalog</h1>
+        <div class="separator-line"></div>
+        <p class="mt-6 text-[10px] uppercase tracking-[0.5em] opacity-30 font-black">Select a Category</p>
+    </header>
+
+    <main class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 relative z-20 pb-24">
         
-        <nav class="glass-nav relative z-[100]">
-            <div class="flex justify-between items-center px-4 md:px-16 py-5">
-                
-                <div class="flex items-center space-x-2 md:space-x-4">
-                    <img src="./img/logo.png" alt="Logo" class="h-9 md:h-16">
-                    <span class="text-xl md:text-5xl font-black uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
-                </div>
+        <a href="okulary-en.html" class="category-card" title="View Sunglasses Catalog">
+            <img src="./img/okulary.jpg" alt="Premium Sunglasses TOMASZEK">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div>
+        </a>
+        
+        <a href="fejerwerki-en.html" class="category-card" title="View Fireworks Catalog">
+            <img src="./img/fejerwerki.jpg" alt="Fireworks Distribution">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div>
+        </a>
+        
+        <a href="kaski-en.html" class="category-card" title="View Helmets & Goggles">
+            <img src="./img/kaski.jpg" alt="Goggles and Helmets">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Goggles / Helmets</h3></div>
+        </a>
+        
+        <a href="zabawki-en.html" class="category-card" title="View Toys Catalog">
+            <img src="./img/zabawki.jpg" alt="Wholesale Toys">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div>
+        </a>
+        
+        <a href="plazowe-en.html" class="category-card" title="View Beach Accessories">
+            <img src="./img/plazowe.jpg" alt="Beach and Summer Accessories">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Beach Goods</h3></div>
+        </a>
+        
+        <a href="znicze-en.html" class="category-card" title="View Candles Catalog">
+            <img src="./img/znicze.jpg" alt="Votive Candles Distribution">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Votive Candles</h3></div>
+        </a>
 
-                <div class="flex items-center space-x-4 md:space-x-12">
-                    
-                    <div class="lang-capsule italic">
-                        <a href="index.html" class="opacity-40 hover:opacity-100 transition">PL</a>
-                        <span class="mx-2 opacity-20">|</span>
-                        <span class="text-[#d4af37]">EN</span>
-                    </div>
+        <a href="samochody-en.html" class="category-card" title="View Die-cast Cars Catalog">
+            <img src="./img/samochody.jpg" alt="Die-cast cars and vehicles">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toy Cars</h3></div>
+        </a>
+        
+        <a href="rekawy-en.html" class="category-card" title="View Swimming Gear">
+            <img src="./img/rekawy.jpg" alt="Swimming sleeves and inflatable gear">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Swimming Gear</h3></div>
+        </a>
 
-                    <div class="hidden md:flex items-center space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
-                        <a href="about-us-en.html" class="hover:text-[#d4af37] transition">About Us</a>
-                        <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
-                    </div>
+    </main>
 
-                    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobile-menu" class="md:hidden border-t border-white/10">
-                <div class="flex flex-col items-center space-y-8 uppercase text-[12px] font-bold tracking-[0.3em]">
-                    <a href="about-us-en.html" class="hover:text-[#d4af37]">About Us</a>
-                    <a href="contact-en.html" class="hover:text-[#d4af37]">Contact</a>
-                </div>
-            </div>
-        </nav>
-
-        <main class="px-6 md:px-16 flex flex-col justify-center flex-grow">
-            <div class="max-w-4xl">
-                <p class="text-4xl md:text-7xl font-black max-w-3xl leading-none mb-10 border-l-[12px] md:border-l-[18px] border-[#d4af37] pl-6 md:pl-12 uppercase italic">
-                    PROFESSIONALISM<br>& EXPERIENCE
-                </p>
-                <a href="katalog-en.html" class="inline-block bg-[#d4af37] text-black px-10 md:px-16 py-4 md:py-6 font-black uppercase tracking-[0.2em] text-sm md:text-lg hover:bg-white transition-all transform hover:scale-105 shadow-2xl">
-                    Open catalog
-                </a>
-            </div>
-        </main>
-
-        <footer class="px-6 md:px-16 py-8 text-[9px] font-bold uppercase tracking-[0.5em] opacity-30 flex justify-between items-center">
-            <span>© 2026 TOMASZEK GROUP</span>
-            <span class="hidden md:inline italic">Excellence in Distribution</span>
-        </footer>
-    </div>
+    <footer class="catalog-container py-10 border-t border-white/5 opacity-20 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
+        <span>TOMASZEK GROUP © 2026</span>
+        <span class="italic">Global Distribution Hub</span>
+    </footer>
 
     <script>
         window.addEventListener("load", () => {
             const l = document.getElementById("loader");
-            l.style.opacity = "0";
-            setTimeout(() => l.style.display = "none", 600);
-        });
-
-        const btn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        
-        btn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("open");
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove("open"));
+            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
         });
     </script>
 </body>
