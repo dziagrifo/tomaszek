@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     <title>Katalog Produktów | TOMASZEK GROUP</title>
-    <meta name="description" content="Profesjonalny katalog produktów Tomaszek Group. Wybierz jakość и doświadczenie.">
+    <meta name="description" content="Profesjonalny katalog produktów Tomaszek Group. Wybierz jakość i doświadczenie w dystrybucji.">
     <meta name="robots" content="index, follow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Идентичная капсула с главной */
+        /* Премиальная капсула перевода */
         .lang-capsule {
             display: flex; align-items: center;
             background: rgba(255, 255, 255, 0.05);
@@ -37,9 +37,9 @@
             font-size: 11px; font-weight: 900; letter-spacing: 1px;
         }
 
-        /* Ограничиваем размер карточек через контейнер */
+        /* Ограничиваем контейнер для компактности 4-х колонок */
         .catalog-container {
-            max-width: 1100px; /* Это не даст им стать слишком большими */
+            max-width: 1280px; 
             margin: 0 auto;
         }
 
@@ -64,8 +64,8 @@
         .category-card:hover img { transform: scale(1.1); filter: brightness(0.9); }
 
         .card-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); 
-            position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 25px; 
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); 
+            position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 20px; 
         }
 
         #loader {
@@ -99,25 +99,29 @@
         <div class="h-[1px] w-20 bg-[#d4af37] mt-4"></div>
     </header>
 
-    <main class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative z-20 pb-24">
+    <main class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 relative z-20 pb-24">
         
-        <div class="category-card"><img src="./img/okulary.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Okulary</h3></div></div>
+        <div class="category-card"><img src="./img/okulary.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Okulary</h3></div></div>
         
-        <div class="category-card"><img src="./img/fejerwerki.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Fejerwerki</h3></div></div>
+        <div class="category-card"><img src="./img/fejerwerki.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fejerwerki</h3></div></div>
         
-        <div class="category-card"><img src="./img/kaski.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Gogle / Kaski</h3></div></div>
+        <div class="category-card"><img src="./img/kaski.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Gogle / Kaski</h3></div></div>
         
-        <div class="category-card"><img src="./img/zabawki.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Zabawki</h3></div></div>
+        <div class="category-card"><img src="./img/zabawki.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Zabawki</h3></div></div>
         
-        <div class="category-card"><img src="./img/plazowe.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Art. Plażowe</h3></div></div>
+        <div class="category-card"><img src="./img/plazowe.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Art. Plażowe</h3></div></div>
         
-        <div class="category-card"><img src="./img/znicze.jpg"><div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Znicze / Wkłady</h3></div></div>
+        <div class="category-card"><img src="./img/znicze.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Znicze / Wkłady</h3></div></div>
+
+        <div class="category-card"><img src="./img/samochody.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Samochody</h3></div></div>
+        
+        <div class="category-card"><img src="./img/rekawy.jpg"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Rękawy / Rekiny</h3></div></div>
 
     </main>
 
     <footer class="catalog-container py-10 border-t border-white/5 opacity-20 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
         <span>TOMASZEK GROUP © 2026</span>
-        <span class="italic">Katalog Produktów</span>
+        <span class="italic">Design for Distribution</span>
     </footer>
 
     <script>
