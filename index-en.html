@@ -1,44 +1,52 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>TOMASZEK | Professionalism & Experience</title>
-    <meta name="description" content="Tomaszek Group – leader in professional distribution. Quality and experience you can trust.">
     
-    <link rel="alternate" hreflang="pl" href="index.html">
-    <link rel="alternate" hreflang="en" href="index-en.html">
-    <link rel="canonical" href="index-en.html">
+    <title>Tomaszek Group | Professional Distribution & Wholesale Hub</title>
+    
+    <meta name="description" content="Tomaszek Group – a leader in professional distribution of toys, sunglasses, and seasonal goods. Quality and decades of experience you can trust.">
+    
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://www.tomaszek.pl/index-en.html">
+
+    <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/index.html">
+    <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/index-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.tomaszek.pl/index.html">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TOMASZEK GROUP",
+      "url": "https://www.tomaszek.pl",
+      "logo": "https://www.tomaszek.pl/img/logo.png",
+      "description": "Professional distribution and wholesale of various consumer goods.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PL"
+      }
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --dark-bg: #1e1e26; }
         body { font-family: 'Inter', sans-serif; background: var(--dark-bg); margin: 0; overflow-x: hidden; }
 
-        .video-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            background: var(--dark-bg);
-        }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-        }
+        .video-container { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: var(--dark-bg); }
+        .video-container video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
 
         .logo-text-gold {
             background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         #loader {
@@ -50,18 +58,10 @@
         .loader-text { color: #d4af37; font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
         @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 
-        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.6); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        /* Mobile menu styles */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-        #mobile-menu.open {
-            max-height: 200px;
-            padding: 20px 0;
-        }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        #mobile-menu.open { max-height: 250px; padding: 20px 0; }
     </style>
 </head>
 
@@ -81,7 +81,7 @@
             <div class="flex justify-between items-center px-4 md:px-16 py-4">
                 
                 <div class="flex items-center space-x-2 md:space-x-4">
-                    <img src="./img/logo.png" alt="Logo" class="h-8 md:h-16">
+                    <img src="./img/logo.png" alt="Tomaszek Group Logo" class="h-8 md:h-16">
                     <span class="text-xl md:text-5xl font-black uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
                 </div>
 
@@ -94,11 +94,11 @@
                     </div>
 
                     <div class="hidden md:flex items-center space-x-10 uppercase text-[11px] font-bold tracking-[0.2em]">
-                        <a href="about-us-en.html" class="hover:text-[#d4af37] transition">About Us</a>
+                        <a href="about-en.html" class="hover:text-[#d4af37] transition">About Us</a>
                         <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
                     </div>
 
-                    <button id="menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Menu">
+                    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
@@ -106,9 +106,9 @@
                 </div>
             </div>
 
-            <div id="mobile-menu" class="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/5">
+            <div id="mobile-menu" class="md:hidden bg-black/90 backdrop-blur-lg border-t border-white/5">
                 <div class="flex flex-col items-center space-y-6 uppercase text-sm font-bold tracking-widest">
-                    <a href="about-us-en.html" class="hover:text-[#d4af37] transition">About Us</a>
+                    <a href="about-en.html" class="hover:text-[#d4af37] transition">About Us</a>
                     <a href="contact-en.html" class="hover:text-[#d4af37] transition">Contact</a>
                 </div>
             </div>
@@ -116,40 +116,36 @@
 
         <main class="px-6 md:px-16 flex flex-col justify-center flex-grow">
             <div class="max-w-4xl">
-                <p class="text-3xl md:text-7xl font-black max-w-3xl leading-tight mb-10 border-l-[10px] md:border-l-[15px] border-[#d4af37] pl-6 md:pl-10 uppercase italic">
-                    PROFESSIONALISM<br>& EXPERIENCE
-                </p>
+                <h1 class="text-3xl md:text-7xl font-black max-w-4xl leading-tight mb-10 border-l-[10px] md:border-l-[15px] border-[#d4af37] pl-6 md:pl-10 uppercase italic">
+                    PROFESSIONALISM<br>AND EXPERIENCE
+                </h1>
+                <p class="mb-8 text-sm md:text-xl opacity-60 uppercase tracking-[0.3em] font-light">Leading distributor of toys and seasonal accessories</p>
+                
                 <a href="katalog-en.html" class="inline-block bg-[#d4af37] text-black px-10 md:px-14 py-4 md:py-6 font-black uppercase tracking-widest text-base md:text-xl hover:bg-[#f3d97d] transition transform hover:scale-105 shadow-2xl">
-                    Open catalog
+                    Open Catalog
                 </a>
             </div>
         </main>
 
-        <footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40 flex justify-between">
+        <footer class="px-6 md:px-16 py-6 text-[9px] font-bold uppercase tracking-[0.5em] opacity-40 flex justify-between items-center">
             <span>© 2026 TOMASZEK GROUP POLAND</span>
             <span class="hidden md:inline italic text-right">Excellence in Distribution</span>
         </footer>
     </div>
 
     <script>
-        // Loader logic
         window.addEventListener("load", () => {
             const l = document.getElementById("loader");
-            l.style.opacity = "0";
-            setTimeout(() => l.style.display = "none", 600);
+            setTimeout(() => {
+                l.style.opacity = "0";
+                setTimeout(() => l.style.display = "none", 600);
+            }, 400);
         });
 
-        // Mobile Menu toggle logic
         const btn = document.getElementById("menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
-        
         btn.addEventListener("click", () => {
             mobileMenu.classList.toggle("open");
-        });
-
-        // Close menu if clicking on a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove("open"));
         });
     </script>
 </body>
