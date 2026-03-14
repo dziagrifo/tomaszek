@@ -7,9 +7,8 @@
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:;">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-    <title>Katalog Produktów | Tomaszek Group</title>
+    <title>Katalog | Tomaszek Group</title>
     
     <link rel="canonical" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
@@ -21,202 +20,136 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        :root { --gold: #d4af37; --gold-light: #f3d97d; --dark-bg: #0f0f11; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; }
+        :root { --gold: #d4af37; --gold-light: #f3d97d; --bg: #0b0b0c; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; margin: 0; overflow-x: hidden; }
 
-        /* Та самая линия */
         .premium-line {
             height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            opacity: 0.3;
+            background: linear-gradient(to right, var(--gold) 0%, transparent 100%);
             width: 100%;
-            margin: 2rem 0;
+            margin-top: 1.5rem;
+            opacity: 0.4;
         }
 
-        .glass-header { 
-            background: rgba(0,0,0,0.4); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid rgba(255,255,255,0.03); 
-        }
-
-        .search-box {
+        .search-under-lang {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             transition: all 0.3s ease;
         }
-        .search-box:focus-within {
-            border-color: var(--gold);
-            background: rgba(255,255,255,0.07);
-        }
+        .search-under-lang:focus-within { border-color: var(--gold); background: rgba(255,255,255,0.08); }
 
-        .product-card {
-            background: #161619;
+        /* Квадраты из истории */
+        .cat-cube {
+            background: #111113;
+            aspect-ratio: 1 / 1;
             border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
         }
-        .product-card:hover {
-            transform: scale(1.02);
-            border-color: var(--gold);
-            z-index: 10;
-        }
-        .product-card img {
-            transition: transform 0.8s ease;
+        .cat-cube:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .cat-cube img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            transition: all 0.7s ease;
             filter: grayscale(100%);
+            z-index: 0;
         }
-        .product-card:hover img {
-            transform: scale(1.1);
-            filter: grayscale(0%);
-        }
+        .cat-cube:hover img { opacity: 0.6; filter: grayscale(0%); transform: scale(1.1); }
+        .cat-title { position: relative; z-index: 10; font-weight: 900; text-transform: uppercase; font-style: italic; font-size: 1.5rem; letter-spacing: -0.05em; }
 
-        .logo-gold {
-            background: linear-gradient(to bottom, var(--gold-light), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        #loader { position: fixed; inset: 0; background: var(--dark-bg); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s ease; }
+        #loader { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.4s ease; }
     </style>
 </head>
 
 <body>
-    <div id="loader"><div class="text-[#d4af37] text-2xl font-900 italic animate-pulse tracking-widest uppercase">Tomaszek</div></div>
+    <div id="loader"><div class="text-[#d4af37] text-xl font-900 italic tracking-[0.5em] animate-pulse">TOMASZEK</div></div>
 
-    <header class="glass-header sticky top-0 z-50">
-        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="./img/logo.png" alt="Logo" class="h-8 md:h-12">
-                <span class="text-xl md:text-3xl font-900 uppercase italic logo-gold">Tomaszek</span>
-            </div>
+    <header class="px-6 md:px-12 py-6">
+        <div class="max-w-[1800px] mx-auto flex justify-between items-start">
+            <a href="index.html" class="group flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.3em] opacity-50 hover:opacity-100 transition">
+                <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Powrót</span>
+            </a>
 
-            <div class="flex items-center space-x-6">
-                <div class="search-box hidden md:flex items-center px-4 py-2 rounded-full">
-                    <svg class="w-4 h-4 text-[#d4af37] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2"/></svg>
-                    <input type="text" id="searchInput" placeholder="Szukaj..." class="bg-transparent border-none outline-none text-[12px] italic w-40 lg:w-64">
+            <div class="flex flex-col items-end space-y-4">
+                <div class="flex items-center space-x-4">
+                    <div class="search-under-lang flex items-center px-4 py-2 rounded-full">
+                        <input type="text" id="searchInput" placeholder="SZUKAJ..." class="bg-transparent border-none outline-none text-[10px] font-bold tracking-widest w-32 md:w-48 text-white">
+                        <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2"/></svg>
+                    </div>
+                    <div class="flex items-center space-x-2 text-[11px] font-900 italic bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <span class="text-[#d4af37]">PL</span>
+                        <span class="opacity-20">|</span>
+                        <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
+                    </div>
                 </div>
-                
-                <div class="flex items-center space-x-2 text-[11px] font-900 italic bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                    <span class="text-[#d4af37]">PL</span>
-                    <span class="opacity-20">|</span>
-                    <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
-                </div>
-                <a href="index.html" class="hidden sm:block text-[11px] font-bold uppercase tracking-widest opacity-50 hover:opacity-100 transition">Home</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-[1600px] mx-auto px-6 md:px-12 py-12">
-        <h1 class="text-6xl md:text-9xl font-900 uppercase italic opacity-10 leading-none absolute -z-10 select-none">Catalog</h1>
-        <div class="pt-10 md:pt-20">
-            <h2 class="text-4xl md:text-6xl font-900 uppercase italic mb-2">Katalog <span class="text-[#d4af37]">Produktów</span></h2>
+    <main class="max-w-[1800px] mx-auto px-6 md:px-12 pb-20">
+        <div class="mb-12">
+            <h1 class="text-6xl md:text-8xl font-900 uppercase italic leading-none">Katalog</h1>
             <div class="premium-line"></div>
         </div>
 
-        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div class="product-card group" data-name="zabawki toys">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">01</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Zabawki</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-1.jpg" alt="Zabawki" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-zabawki.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-zabawki.html" class="cat-cube group" data-name="zabawki toys">
+                <img src="./img/zabawki.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">01</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Zabawki</span>
+            </a>
 
-            <div class="product-card group" data-name="okulary sun glasses">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">02</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Okulary</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-2.jpg" alt="Okulary" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-okulary.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-okulary.html" class="cat-cube group" data-name="okulary sun glasses">
+                <img src="./img/okulary.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">02</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Okulary</span>
+            </a>
 
-            <div class="product-card group" data-name="sezonowe seasonal">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">03</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Sezonowe</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-3.jpg" alt="Sezonowe" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-sezonowe.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-sezonowe.html" class="cat-cube group" data-name="sezonowe seasonal">
+                <img src="./img/sezonowe.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">03</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Sezonowe</span>
+            </a>
 
-            <div class="product-card group" data-name="plaża beach summer">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">04</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Plaża</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-4.jpg" alt="Plaża" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-plaza.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-plaza.html" class="cat-cube group" data-name="plaża beach summer">
+                <img src="./img/plaza.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">04</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Plaża</span>
+            </a>
 
-            <div class="product-card group" data-name="sport fitness">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">05</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Sport</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-5.jpg" alt="Sport" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-sport.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-sport.html" class="cat-cube group" data-name="sport fitness">
+                <img src="./img/sport.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">05</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Sport</span>
+            </a>
 
-            <div class="product-card group" data-name="ogród garden">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">06</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Ogród</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-6.jpg" alt="Ogród" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-ogrod.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-ogrod.html" class="cat-cube group" data-name="ogród garden">
+                <img src="./img/ogrod.jpg" alt="">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">06</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Ogród</span>
+            </a>
 
-            <div class="product-card group" data-name="upominki gifts">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">07</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Upominki</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-7.jpg" alt="Upominki" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-upominki.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-nowosci.html" class="cat-cube group bg-white/5" data-name="nowości news">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">07</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Nowości</span>
+            </a>
 
-            <div class="product-card group" data-name="nowości news">
-                <div class="p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[#d4af37] font-900 italic text-xl">08</span>
-                        <h3 class="text-2xl font-900 uppercase italic group-hover:text-[#d4af37] transition text-right">Nowości</h3>
-                    </div>
-                    <div class="aspect-square overflow-hidden bg-black/20">
-                        <img src="./img/cat-8.jpg" alt="Nowości" class="w-full h-full object-cover">
-                    </div>
-                    <a href="kat-nowosci.html" class="mt-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-[#d4af37]/30 group-hover:border-[#d4af37] transition pb-1">Zobacz więcej</a>
-                </div>
-            </div>
+            <a href="kat-outlet.html" class="cat-cube group bg-white/5" data-name="outlet sale">
+                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">08</span>
+                <span class="cat-title group-hover:text-[#d4af37] transition">Outlet</span>
+            </a>
 
         </div>
     </main>
@@ -224,17 +157,17 @@
     <script>
         window.addEventListener("load", () => {
             const l = document.getElementById("loader");
-            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 500); }, 500);
+            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 400); }, 300);
         });
 
         const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.product-card');
+        const cards = document.querySelectorAll('.cat-cube');
 
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
             cards.forEach(card => {
                 const name = card.getAttribute('data-name').toLowerCase();
-                card.style.display = name.includes(term) ? 'block' : 'none';
+                card.style.display = name.includes(term) ? 'flex' : 'none';
             });
         });
     </script>
