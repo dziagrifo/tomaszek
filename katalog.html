@@ -1,180 +1,46 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog | TOMASZEK</title>
+<style>
+    /* ... (остальные стили остаются) ... */
+
+    /* НОВАЯ ИЗЯЩНАЯ СТРЕЛКА */
+    .btn-back {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        font-weight: 700;
+        font-size: 11px; /* Чуть меньше для элегантности */
+        text-transform: uppercase;
+        tracking-widest: 0.3em;
+        transition: all 0.3s ease;
+        opacity: 0.6;
+    }
+
+    .btn-back:hover {
+        opacity: 1;
+        transform: translateX(-5px); /* Легкое движение влево при наведении */
+    }
+
+    .btn-back svg {
+        width: 24px; /* Длинная и тонкая */
+        height: 12px;
+        stroke-width: 1.5px; /* Очень тонкая линия */
+    }
+</style>
+
+<nav class="flex justify-between items-center mb-12">
+    <a href="index.html" class="btn-back">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+        </svg>
+        POWRÓT
+    </a>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --graphite: #232326; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; background-color: var(--graphite);
-            background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
-            color: white; margin: 0; min-height: 100vh; display: flex; flex-direction: column;
-        }
-
-        /* Плавная линия под заголовком */
-        .premium-line-fade {
-            width: 100%; height: 1px;
-            background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 30%, transparent 100%);
-            margin-top: 8px;
-        }
-
-        .logo-text-gold {
-            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        /* PL EN BUBBLE (из твоего фото) */
-        .lang-pill {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px; padding: 4px 16px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .lang-active { color: var(--gold-dark); font-weight: 900; font-style: italic; font-size: 12px; }
-        .lang-sep { color: rgba(255, 255, 255, 0.2); transform: skewX(-15deg); font-weight: 300; }
-        .lang-link { color: rgba(255, 255, 255, 0.4); font-weight: 900; font-style: italic; font-size: 12px; }
-
-        /* Компактная сетка */
-        .catalog-container {
-            max-width: 1050px; 
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .category-card { 
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            position: relative; overflow: hidden; aspect-ratio: 1/1;
-        }
-        
-        .category-card:hover { 
-            border-color: var(--gold-dark); transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .category-card img { 
-            width: 100%; height: 100%; object-fit: cover;
-            transition: 1s ease; filter: brightness(0.8);
-        }
-        .category-card:hover img { transform: scale(1.1); filter: brightness(1.1); }
-
-        .card-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); 
-            position: absolute; inset: 0; display: flex; flex-direction: column; 
-            justify-content: flex-end; padding: 15px; 
-        }
-
-        /* Белый футер */
-        .footer-text {
-            color: white; font-size: 10px; text-transform: uppercase; 
-            letter-spacing: 0.15em; opacity: 0.5; font-weight: 400;
-        }
-
-        /* СТИЛЬ ДЛЯ POWROT С ВИДИМОЙ СТРЕЛКОЙ */
-        .btn-back {
-            display: flex; align-items: center; gap: 10px;
-            color: white; font-weight: 800; font-size: 13px;
-            text-transform: uppercase; tracking-widest;
-            transition: 0.3s;
-        }
-        .btn-back:hover { opacity: 0.7; }
-        .btn-back svg { width: 18px; height: 18px; stroke-width: 3px; }
-    </style>
-</head>
-
-<body class="px-6 md:px-20 pt-10">
-
-    <nav class="flex justify-between items-center mb-12">
-        <a href="index.html" class="btn-back">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            POWRÓT
-        </a>
-        
-        <div class="flex items-center space-x-6">
-            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="bg-transparent border-b border-white/10 outline-none text-[10px] tracking-widest w-24 focus:w-40 transition-all text-white">
-            <div class="lang-pill">
-                <span class="lang-active uppercase">PL</span>
-                <span class="lang-sep">|</span>
-                <a href="katalog-en.html" class="lang-link uppercase hover:text-white transition">EN</a>
-            </div>
+    <div class="flex items-center space-x-6">
+        <input type="text" id="catSearch" placeholder="SZUKAJ..." class="bg-transparent border-b border-white/10 outline-none text-[10px] tracking-widest w-24 focus:w-40 transition-all text-white">
+        <div class="lang-pill">
+            <span class="lang-active uppercase">PL</span>
+            <span class="lang-sep">|</span>
+            <a href="katalog-en.html" class="lang-link uppercase hover:text-white transition">EN</a>
         </div>
-    </nav>
-
-    <header class="mb-14">
-        <h1 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter logo-text-gold">KATALOG</h1>
-        <div class="premium-line-fade"></div>
-    </header>
-
-    <main class="flex-grow catalog-container">
-        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <a href="kat-okulary.html" class="category-card">
-                <img src="./img/okulary.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Okulary</h3></div>
-            </a>
-
-            <a href="kat-fejerwerki.html" class="category-card">
-                <img src="./img/fejerwerki.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Fejerwerki</h3></div>
-            </a>
-
-            <a href="kat-kaski.html" class="category-card">
-                <img src="./img/kaski.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Gogle / Kaski</h3></div>
-            </a>
-
-            <a href="kat-zabawki.html" class="category-card">
-                <img src="./img/zabawki.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Zabawki</h3></div>
-            </a>
-
-            <a href="kat-plazowe.html" class="category-card">
-                <img src="./img/plazowe.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Art. Plażowe</h3></div>
-            </a>
-
-            <a href="kat-znicze.html" class="category-card">
-                <img src="./img/znicze.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Znicze / Wkłady</h3></div>
-            </a>
-
-            <a href="#" class="category-card">
-                <img src="./img/placeholder1.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Nowość 1</h3></div>
-            </a>
-
-            <a href="#" class="category-card">
-                <img src="./img/placeholder2.jpg">
-                <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Nowość 2</h3></div>
-            </a>
-
-        </div>
-    </main>
-
-    <footer class="flex justify-between items-center py-10 mt-10">
-        <div class="footer-text">© TOMASZEK GROUP</div>
-        <div class="footer-text">© BY GRIFFIN WOOD</div>
-    </footer>
-
-    <script>
-        const searchInput = document.getElementById('catSearch');
-        const cards = document.querySelectorAll('.category-card');
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            cards.forEach(card => {
-                const name = card.innerText.toLowerCase();
-                card.style.display = name.includes(term) ? 'block' : 'none';
-            });
-        });
-    </script>
-</body>
-</html>
+    </div>
+</nav>
