@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     <title>Catalog | Products</title>
-    <meta name="description" content="Product catalog: toys, sunglasses, seasonal articles.">
+    <meta name="description" content="Product catalog: toys, sunglasses, and seasonal goods.">
     
     <link rel="canonical" href="https://www.tomaszek.pl/katalog-en.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
@@ -30,6 +30,7 @@
         .btn-back { color: white; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; transition: all 0.4s ease; }
         .btn-back:hover { color: var(--gold-light); }
 
+        /* SEARCH BAR STYLE */
         .search-container { position: relative; margin-right: 20px; }
         .search-input {
             background: rgba(255, 255, 255, 0.05);
@@ -97,14 +98,14 @@
     </header>
 
     <main id="catalogGrid" class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative z-20 pb-24">
-        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses sun glasses summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
-        <a href="fejerwerki-en.html" class="category-card" data-keywords="fireworks pyrotechnics petards fire"><img src="./img/fejerwerki.jpg" alt="Fireworks"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div></a>
+        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses glasses sun summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
+        <a href="fejerwerki-en.html" class="category-card" data-keywords="fireworks fire celebration pyrotechnics"><img src="./img/fejerwerki.jpg" alt="Fireworks"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div></a>
         <a href="kaski-en.html" class="category-card" data-keywords="helmets goggles ski winter sport"><img src="./img/kaski.jpg" alt="Helmets"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Goggles / Helmets</h3></div></a>
-        <a href="zabawki-en.html" class="category-card" data-keywords="toys children kids gift"><img src="./img/zabawki.jpg" alt="Toys"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div></a>
-        <a href="plazowe-en.html" class="category-card" data-keywords="beach water pool summer"><img src="./img/plazowe.jpg" alt="Beach Goods"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Beach Goods</h3></div></a>
-        <a href="znicze-en.html" class="category-card" data-keywords="votive candles lights cemetery"><img src="./img/znicze.jpg" alt="Votive Candles"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Votive Candles</h3></div></a>
-        <a href="samochody-en.html" class="category-card" data-keywords="cars models vehicles toys"><img src="./img/samochody.jpg" alt="Model Cars"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Model Cars</h3></div></a>
-        <a href="rekawy-en.html" class="category-card" data-keywords="armbands sharks swimming pool water"><img src="./img/rekawy.jpg" alt="Armbands"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Armbands / Sharks</h3></div></a>
+        <a href="zabawki-en.html" class="category-card" data-keywords="toys children kids gift present"><img src="./img/zabawki.jpg" alt="Toys"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div></a>
+        <a href="plazowe-en.html" class="category-card" data-keywords="beach water pool summer swimming"><img src="./img/plazowe.jpg" alt="Beach"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Beach Goods</h3></div></a>
+        <a href="znicze-en.html" class="category-card" data-keywords="candles grave lights cemetery fire"><img src="./img/znicze.jpg" alt="Votive Candles"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Votive Candles</h3></div></a>
+        <a href="samochody-en.html" class="category-card" data-keywords="cars vehicles models toys racing"><img src="./img/samochody.jpg" alt="Cars"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Model Cars</h3></div></a>
+        <a href="rekawy-en.html" class="category-card" data-keywords="armbands sharks swimming water pool"><img src="./img/rekawy.jpg" alt="Armbands"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Armbands / Sharks</h3></div></a>
     </main>
 
     <footer class="catalog-container py-10 border-t border-white/5 opacity-10 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
@@ -118,6 +119,7 @@
             setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
         });
 
+        // SEARCH FUNCTION
         const runSearch = (query) => {
             const filter = query.toLowerCase();
             const cards = document.querySelectorAll('.category-card');
@@ -132,8 +134,12 @@
             });
         };
 
-        document.getElementById('searchInput').addEventListener('input', (e) => runSearch(e.target.value));
-        document.getElementById('mobileSearchInput').addEventListener('input', (e) => runSearch(e.target.value));
+        // Listeners for both search bars
+        const sInput = document.getElementById('searchInput');
+        const mInput = document.getElementById('mobileSearchInput');
+
+        if(sInput) sInput.addEventListener('input', (e) => runSearch(e.target.value));
+        if(mInput) mInput.addEventListener('input', (e) => runSearch(e.target.value));
     </script>
 </body>
 </html>
