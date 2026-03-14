@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
-    <title>Catalog | Products</title>
-    <meta name="description" content="Product catalog: toys, sunglasses, seasonal articles.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
+    <title>Product Catalog | Tomaszek Group</title>
+    <meta name="description" content="Explore our professional product catalog: toys, seasonal items, and sunglasses. Premium wholesale quality.">
     
     <link rel="canonical" href="https://www.tomaszek.pl/katalog-en.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/katalog-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://www.tomaszek.pl/katalog.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,123 +21,78 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --dark-bg: #1e1e26; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; }
-        
-        .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-line { height: 1px; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%); width: 100%; }
-        
-        /* Линия под заголовком */
-        .separator-line { width: 100%; height: 1px; background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 70%, transparent 100%); margin-top: 1rem; }
-
-        .btn-back { color: white; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; transition: all 0.4s ease; }
-        .btn-back:hover { color: var(--gold-light); }
-
-        /* Стиль Поиска в навигации */
-        .search-container { position: relative; margin-right: 20px; }
-        .search-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 99px;
-            color: white;
-            padding: 6px 15px 6px 35px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            outline: none;
-            transition: all 0.3s ease;
-            width: 150px;
-        }
-        .search-input:focus { width: 220px; border-color: var(--gold-dark); background: rgba(255, 255, 255, 0.08); }
-        .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); opacity: 0.3; pointer-events: none; }
-
-        .lang-capsule { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 99px; padding: 6px 12px; font-size: 10px; font-weight: 900; }
-        
-        .catalog-container { max-width: 1280px; margin: 0 auto; }
-        
-        .category-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); position: relative; overflow: hidden; aspect-ratio: 1/1; display: block; }
-        .category-card:hover { border-color: var(--gold-dark); transform: translateY(-5px); }
-        .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; filter: brightness(0.5); }
-        .category-card:hover img { transform: scale(1.1); filter: brightness(0.7); }
-        .card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 25px; }
-        
+        :root { --gold: #d4af37; --gold-light: #f3d97d; --dark: #1e1e26; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: white; margin: 0; }
+        .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); sticky top: 0; z-index: 100; }
+        .search-input { background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s ease; }
+        .search-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.07); outline: none; }
+        .product-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: all 0.5s ease; overflow: hidden; }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(255,255,255,0.05); }
         #loader { position: fixed; inset: 0; background: #1e1e26; display: flex; align-items: center; justify-content: center; z-index: 999; transition: opacity 0.6s ease; }
+        .loader-text { color: var(--gold); font-size: 24px; letter-spacing: 4px; animation: pulse 1.5s infinite; font-weight: 900; }
+        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
     </style>
 </head>
 
-<body class="px-6">
-    <div id="loader"><div class="text-[#d4af37] text-xl font-900 uppercase italic tracking-[4px] animate-pulse">Tomaszek</div></div>
+<body>
+    <div id="loader"><div class="loader-text uppercase italic">Tomaszek</div></div>
 
-    <nav class="max-w-7xl mx-auto relative z-20">
-        <div class="flex justify-between items-center py-8">
-            <a href="index-en.html" class="btn-back">← <span class="ml-2">Back</span></a>
-            
-            <div class="flex items-center">
-                <div class="search-container hidden md:block">
-                    <svg class="search-icon w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-                </div>
-
-                <div class="lang-capsule italic text-white/40">
-                    <a href="katalog.html" class="hover:text-white transition">PL</a>
-                    <span class="mx-2 opacity-20">|</span>
+    <nav class="glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="./img/logo.png" alt="Logo" class="h-10">
+                <span class="text-2xl font-900 uppercase italic logo-text-gold tracking-tighter">Tomaszek</span>
+            </div>
+            <div class="flex items-center space-x-8">
+                <div class="flex space-x-2 text-[11px] font-black italic bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                    <a href="katalog.html" class="opacity-40 hover:opacity-100 transition">PL</a>
+                    <span class="opacity-20">|</span>
                     <span class="text-[#d4af37]">EN</span>
                 </div>
+                <a href="index-en.html" class="uppercase text-[11px] font-bold tracking-widest opacity-60 hover:opacity-100 transition">Home</a>
             </div>
         </div>
-        <div class="nav-line"></div>
     </nav>
 
-    <header class="catalog-container mt-16 mb-12 relative z-20">
-        <h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter logo-text-gold">
-            Catalog
-        </h1>
-        <div class="separator-line"></div>
-        <p class="mt-6 text-[10px] uppercase tracking-[0.5em] opacity-30 font-black">Select product category</p>
-        
-        <div class="md:hidden mt-8">
-             <input type="text" id="mobileSearchInput" placeholder="Search..." class="search-input w-full">
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="mb-16">
+            <h1 class="text-6xl md:text-8xl font-900 italic uppercase mb-6">Catalog</h1>
+            <div class="h-1 w-32 bg-[#d4af37] mb-8"></div>
+            
+            <div class="relative max-w-2xl">
+                <input type="text" id="searchInput" placeholder="Search categories..." class="search-input w-full p-6 text-white text-lg font-light tracking-wide italic">
+            </div>
         </div>
-    </header>
 
-    <main id="catalogGrid" class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative z-20 pb-24">
-        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses sun glasses summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
-        <a href="fejerwerki-en.html" class="category-card" data-keywords="fireworks fire celebration pyrotechnics"><img src="./img/fejerwerki.jpg" alt="Fireworks"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div></a>
-        <a href="kaski-en.html" class="category-card" data-keywords="helmets goggles ski winter sport"><img src="./img/kaski.jpg" alt="Helmets"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Goggles / Helmets</h3></div></a>
-        <a href="zabawki-en.html" class="category-card" data-keywords="toys children kids gift present"><img src="./img/zabawki.jpg" alt="Toys"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div></a>
-        <a href="plazowe-en.html" class="category-card" data-keywords="beach water pool summer swimming"><img src="./img/plazowe.jpg" alt="Beach"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Beach Goods</h3></div></a>
-        <a href="znicze-en.html" class="category-card" data-keywords="candles grave lights cemetery fire"><img src="./img/znicze.jpg" alt="Votive Candles"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Votive Candles</h3></div></a>
-        <a href="samochody-en.html" class="category-card" data-keywords="cars vehicles models toys racing"><img src="./img/samochody.jpg" alt="Cars"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Model Cars</h3></div></a>
-        <a href="rekawy-en.html" class="category-card" data-keywords="armbands sharks swimming water pool"><img src="./img/rekawy.jpg" alt="Armbands"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Armbands / Sharks</h3></div></a>
+        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="product-card group p-8 relative cursor-pointer" data-name="toys zabawki">
+                <p class="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-2">Category 01</p>
+                <h3 class="text-3xl font-900 uppercase italic mb-6 group-hover:text-[#d4af37] transition-colors">Toys</h3>
+                <div class="aspect-square bg-white/5 mb-6 overflow-hidden">
+                    <img src="./img/toys.jpg" alt="Toys" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                </div>
+                <a href="products-toys.html" class="text-[11px] font-900 uppercase tracking-widest border-b border-[#d4af37] pb-1">View Products</a>
+            </div>
+            </div>
     </main>
-
-    <footer class="catalog-container py-10 border-t border-white/5 opacity-10 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
-        <span>TOMASZEK © 2026</span>
-        <span class="italic">Product Catalog</span>
-    </footer>
 
     <script>
         window.addEventListener("load", () => {
             const l = document.getElementById("loader");
-            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
+            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 400);
         });
 
-        const runSearch = (query) => {
-            const filter = query.toLowerCase();
-            const cards = document.querySelectorAll('.category-card');
-            cards.forEach(card => {
-                const title = card.querySelector('h3').innerText.toLowerCase();
-                const keywords = card.getAttribute('data-keywords').toLowerCase();
-                if (title.includes(filter) || keywords.includes(filter)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        };
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.product-card');
 
-        document.getElementById('searchInput').addEventListener('input', (e) => runSearch(e.target.value));
-        document.getElementById('mobileSearchInput').addEventListener('input', (e) => runSearch(e.target.value));
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                card.style.display = name.includes(term) ? 'block' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
