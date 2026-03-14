@@ -1,184 +1,84 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:;">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-
-    <title>Katalog | Tomaszek Group</title>
-    
-    <link rel="canonical" href="https://www.tomaszek.pl/katalog.html">
-    <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
-    <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/katalog-en.html">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog | TOMASZEK</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --gold-light: #f3d97d; --bg: #0b0b0c; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; margin: 0; overflow-x: hidden; }
-
-        .premium-line {
-            height: 1px;
-            background: linear-gradient(to right, var(--gold) 0%, transparent 100%);
-            width: 100%;
-            margin-top: 1rem;
-            opacity: 0.5;
-        }
-
-        .search-trigger {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.3s ease;
-        }
-        .search-trigger:focus-within { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-
-        /* Та самая сетка кубов */
-        .grid-cube {
-            aspect-ratio: 1 / 1;
-            background: #111113;
-            border: 1px solid rgba(255,255,255,0.03);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2.5rem;
-            text-decoration: none;
-        }
-        .grid-cube:hover { border-color: var(--gold); transform: translateY(-8px); z-index: 10; }
+        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --graphite: #232326; }
         
-        .grid-cube img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-            filter: grayscale(100%);
-            transition: all 0.8s ease;
-            z-index: 0;
+        body { 
+            font-family: 'Inter', sans-serif; background-color: var(--graphite);
+            background-image: radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 35%), 
+                              radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 35%);
+            color: white; margin: 0; min-height: 100vh; position: relative;
         }
-        .grid-cube:hover img { opacity: 0.7; filter: grayscale(0%); transform: scale(1.1); }
-        
-        .cube-title {
-            position: relative;
-            z-index: 10;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-style: italic;
-            font-size: 1.75rem;
-            line-height: 1;
-            letter-spacing: -0.05em;
-        }
-        .cube-num { position: relative; z-index: 10; color: var(--gold); font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; }
 
-        #loader { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s ease; }
+        body::before {
+            content: ""; position: fixed; inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.2; pointer-events: none; z-index: 0;
+        }
+
+        .logo-text-gold {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .category-card { 
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative; overflow: hidden; aspect-ratio: 1/1; z-index: 10;
+        }
+        
+        .category-card:hover { 
+            border-color: var(--gold-dark);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Это правило само подгонит любое фото под квадрат */
+        .category-card img { 
+            width: 100%; height: 100%; object-fit: cover; object-position: center;
+            transition: all 0.8s ease; filter: brightness(0.7); 
+        }
+
+        .category-card:hover img { transform: scale(1.1); filter: brightness(1); opacity: 0.6; }
+
+        .card-overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 70%); 
+            position: absolute; inset: 0; display: flex; flex-direction: column; 
+            justify-content: flex-end; padding: 25px; 
+        }
+
+        .white-line { width: 100%; height: 1px; background: white; opacity: 0.3; }
     </style>
 </head>
-
-<body>
-    <div id="loader"><div class="text-[#d4af37] text-2xl font-900 italic tracking-[0.4em] animate-pulse">TOMASZEK</div></div>
-
-    <header class="max-w-[1800px] mx-auto px-6 md:px-12 py-8 flex justify-between items-center">
-        <a href="index.html" class="flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.3em] opacity-50 hover:opacity-100 transition group">
-            <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Powrót</span>
-        </a>
-
-        <div class="flex items-center space-x-6">
-            <div class="search-trigger flex items-center px-4 py-2 rounded-full">
-                <input type="text" id="searchInput" placeholder="SZUKAJ..." class="bg-transparent border-none outline-none text-[10px] font-black tracking-widest w-28 md:w-48 text-white placeholder-white/20">
-                <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2"/></svg>
-            </div>
-            <div class="flex items-center space-x-2 text-[11px] font-900 italic bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                <span class="text-[#d4af37]">PL</span>
-                <span class="opacity-20">|</span>
-                <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
-            </div>
+<body class="p-6 md:p-16">
+    <nav class="flex justify-between items-center mb-16 border-b border-white/10 pb-6 relative z-20">
+        <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition">← Powrót</a>
+        <div class="flex space-x-4 text-[11px] font-black italic">
+            <span class="text-[#d4af37]">PL</span>
+            <span class="opacity-10">|</span>
+            <a href="katalog-en.html" class="hover:text-[#d4af37] transition opacity-40">EN</a>
         </div>
+    </nav>
+
+    <header class="mb-20 inline-block relative z-20">
+        <h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-2 pr-6 logo-text-gold">KATALOG</h1>
+        <div class="white-line"></div>
     </header>
 
-    <main class="max-w-[1800px] mx-auto px-6 md:px-12 pb-24">
-        <div class="mb-16">
-            <h1 class="text-7xl md:text-9xl font-900 uppercase italic leading-none tracking-tighter">Katalog</h1>
-            <div class="premium-line"></div>
-        </div>
-
-        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            
-            <a href="kat-zabawki.html" class="grid-cube" data-name="zabawki toys">
-                <img src="./img/zabawki.jpg" alt="Zabawki">
-                <span class="cube-num">01</span>
-                <span class="cube-title">Zabawki</span>
-            </a>
-
-            <a href="kat-okulary.html" class="grid-cube" data-name="okulary sunglasses">
-                <img src="./img/okulary.jpg" alt="Okulary">
-                <span class="cube-num">02</span>
-                <span class="cube-title">Okulary</span>
-            </a>
-
-            <a href="kat-sezonowe.html" class="grid-cube" data-name="sezonowe seasonal">
-                <img src="./img/sezonowe.jpg" alt="Sezonowe">
-                <span class="cube-num">03</span>
-                <span class="cube-title">Sezonowe</span>
-            </a>
-
-            <a href="kat-plaza.html" class="grid-cube" data-name="plaża beach">
-                <img src="./img/plaza.jpg" alt="Plaża">
-                <span class="cube-num">04</span>
-                <span class="cube-title">Plaża</span>
-            </a>
-
-            <a href="kat-sport.html" class="grid-cube" data-name="sport fitness">
-                <img src="./img/sport.jpg" alt="Sport">
-                <span class="cube-num">05</span>
-                <span class="cube-title">Sport</span>
-            </a>
-
-            <a href="kat-ogrod.html" class="grid-cube" data-name="ogród garden">
-                <img src="./img/ogrod.jpg" alt="Ogród">
-                <span class="cube-num">06</span>
-                <span class="cube-title">Ogród</span>
-            </a>
-
-            <a href="kat-nowosci.html" class="grid-cube bg-white/[0.02]" data-name="nowości news">
-                <span class="cube-num">07</span>
-                <span class="cube-title">Nowości</span>
-            </a>
-
-            <a href="kat-outlet.html" class="grid-cube bg-white/[0.02]" data-name="outlet sale">
-                <span class="cube-num">08</span>
-                <span class="cube-title">Outlet</span>
-            </a>
-
-        </div>
-    </main>
-
-    <script>
-        window.addEventListener("load", () => {
-            const l = document.getElementById("loader");
-            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 500); }, 400);
-        });
-
-        // Поиск работает мгновенно
-        const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.grid-cube');
-
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name').toLowerCase();
-                card.style.display = name.includes(term) ? 'flex' : 'none';
-            });
-        });
-    </script>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative z-20">
+        <div class="category-card"><img src="./img/okulary.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Okulary</h3></div></div>
+        <div class="category-card"><img src="./img/fejerwerki.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Fejerwerki</h3></div></div>
+        <div class="category-card"><img src="./img/kaski.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Gogle / Kaski</h3></div></div>
+        <div class="category-card"><img src="./img/zabawki.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Zabawki</h3></div></div>
+        <div class="category-card"><img src="./img/plazowe.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Art. Plażowe</h3></div></div>
+        <div class="category-card"><img src="./img/znicze.jpg"><div class="card-overlay"><h3 class="text-2xl font-black uppercase italic">Znicze / Wkłady</h3></div></div>
+    </div>
 </body>
 </html>
