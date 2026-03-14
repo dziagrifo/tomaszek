@@ -107,4 +107,33 @@
         <a href="rekawy-en.html" class="category-card" data-keywords="armbands sharks swimming pool water"><img src="./img/rekawy.jpg" alt="Armbands"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Armbands / Sharks</h3></div></a>
     </main>
 
-    <footer class="catalog-container py-10 border-t border-white/5 opacity-10
+    <footer class="catalog-container py-10 border-t border-white/5 opacity-10 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
+        <span>TOMASZEK © 2026</span>
+        <span class="italic">Product Catalog</span>
+    </footer>
+
+    <script>
+        window.addEventListener("load", () => {
+            const l = document.getElementById("loader");
+            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
+        });
+
+        const runSearch = (query) => {
+            const filter = query.toLowerCase();
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                if (title.includes(filter) || keywords.includes(filter)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        };
+
+        document.getElementById('searchInput').addEventListener('input', (e) => runSearch(e.target.value));
+        document.getElementById('mobileSearchInput').addEventListener('input', (e) => runSearch(e.target.value));
+    </script>
+</body>
+</html>
