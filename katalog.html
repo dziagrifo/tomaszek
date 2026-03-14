@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
-    <title>Catalog | Products</title>
-    <meta name="description" content="Product catalog: toys, sunglasses, and seasonal goods.">
+    <title>Katalog | Produkty</title>
+    <meta name="description" content="Katalog produktów: zabawki, okulary, artykuły sezonowe.">
     
-    <link rel="canonical" href="https://www.tomaszek.pl/katalog-en.html">
+    <link rel="canonical" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
     <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/katalog-en.html">
     <link rel="alternate" hreflang="x-default" href="https://www.tomaszek.pl/katalog.html">
@@ -25,12 +25,13 @@
         .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-line { height: 1px; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%); width: 100%; }
         
+        /* Линия под заголовком (вернул) */
         .separator-line { width: 100%; height: 1px; background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 70%, transparent 100%); margin-top: 1rem; }
 
         .btn-back { color: white; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; transition: all 0.4s ease; }
         .btn-back:hover { color: var(--gold-light); }
 
-        /* SEARCH BAR STYLE */
+        /* Новый стиль Поиска в навигации */
         .search-container { position: relative; margin-right: 20px; }
         .search-input {
             background: rgba(255, 255, 255, 0.05);
@@ -67,18 +68,18 @@
 
     <nav class="max-w-7xl mx-auto relative z-20">
         <div class="flex justify-between items-center py-8">
-            <a href="index-en.html" class="btn-back">← <span class="ml-2">Back</span></a>
+            <a href="index.html" class="btn-back">← <span class="ml-2">Powrót</span></a>
             
             <div class="flex items-center">
                 <div class="search-container hidden md:block">
                     <svg class="search-icon w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                    <input type="text" id="searchInput" placeholder="Szukaj..." class="search-input">
                 </div>
 
                 <div class="lang-capsule italic text-white/40">
-                    <a href="katalog.html" class="hover:text-white transition">PL</a>
+                    <span class="text-[#d4af37]">PL</span>
                     <span class="mx-2 opacity-20">|</span>
-                    <span class="text-[#d4af37]">EN</span>
+                    <a href="katalog-en.html" class="hover:text-white transition">EN</a>
                 </div>
             </div>
         </div>
@@ -87,30 +88,30 @@
 
     <header class="catalog-container mt-16 mb-12 relative z-20">
         <h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter logo-text-gold">
-            Catalog
+            Katalog
         </h1>
         <div class="separator-line"></div>
-        <p class="mt-6 text-[10px] uppercase tracking-[0.5em] opacity-30 font-black">Select product category</p>
+        <p class="mt-6 text-[10px] uppercase tracking-[0.5em] opacity-30 font-black">Wybierz kategorię produktów</p>
         
         <div class="md:hidden mt-8">
-             <input type="text" id="mobileSearchInput" placeholder="Search..." class="search-input w-full">
+             <input type="text" id="mobileSearchInput" placeholder="Szukaj..." class="search-input w-full">
         </div>
     </header>
 
     <main id="catalogGrid" class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative z-20 pb-24">
-        <a href="okulary-en.html" class="category-card" data-keywords="sunglasses glasses sun summer"><img src="./img/okulary.jpg" alt="Sunglasses"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Sunglasses</h3></div></a>
-        <a href="fejerwerki-en.html" class="category-card" data-keywords="fireworks fire celebration pyrotechnics"><img src="./img/fejerwerki.jpg" alt="Fireworks"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fireworks</h3></div></a>
-        <a href="kaski-en.html" class="category-card" data-keywords="helmets goggles ski winter sport"><img src="./img/kaski.jpg" alt="Helmets"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Goggles / Helmets</h3></div></a>
-        <a href="zabawki-en.html" class="category-card" data-keywords="toys children kids gift present"><img src="./img/zabawki.jpg" alt="Toys"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Toys</h3></div></a>
-        <a href="plazowe-en.html" class="category-card" data-keywords="beach water pool summer swimming"><img src="./img/plazowe.jpg" alt="Beach"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Beach Goods</h3></div></a>
-        <a href="znicze-en.html" class="category-card" data-keywords="candles grave lights cemetery fire"><img src="./img/znicze.jpg" alt="Votive Candles"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Votive Candles</h3></div></a>
-        <a href="samochody-en.html" class="category-card" data-keywords="cars vehicles models toys racing"><img src="./img/samochody.jpg" alt="Cars"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Model Cars</h3></div></a>
-        <a href="rekawy-en.html" class="category-card" data-keywords="armbands sharks swimming water pool"><img src="./img/rekawy.jpg" alt="Armbands"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Armbands / Sharks</h3></div></a>
+        <a href="okulary.html" class="category-card" data-keywords="okulary sun glasses lato"><img src="./img/okulary.jpg" alt="Okulary"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Okulary</h3></div></a>
+        <a href="fejerwerki.html" class="category-card" data-keywords="fajerwerki petardy pirotechnika"><img src="./img/fejerwerki.jpg" alt="Fejerwerki"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fejerwerki</h3></div></a>
+        <a href="kaski.html" class="category-card" data-keywords="kaski gogle narty zima"><img src="./img/kaski.jpg" alt="Kaski"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Gogle / Kaski</h3></div></a>
+        <a href="zabawki.html" class="category-card" data-keywords="zabawki dzieci toy kids"><img src="./img/zabawki.jpg" alt="Zabawki"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Zabawki</h3></div></a>
+        <a href="plazowe.html" class="category-card" data-keywords="plaża woda basen lato"><img src="./img/plazowe.jpg" alt="Plażowe"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Art. Plażowe</h3></div></a>
+        <a href="znicze.html" class="category-card" data-keywords="znicze wkłady cmentarz"><img src="./img/znicze.jpg" alt="Znicze"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Znicze / Wkłady</h3></div></a>
+        <a href="samochody.html" class="category-card" data-keywords="auta samochody modele"><img src="./img/samochody.jpg" alt="Samochody"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Samochody</h3></div></a>
+        <a href="rekawy.html" class="category-card" data-keywords="rękawy rekiny pływanie woda"><img src="./img/rekawy.jpg" alt="Rękawy"><div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Rękawy / Rekiny</h3></div></a>
     </main>
 
     <footer class="catalog-container py-10 border-t border-white/5 opacity-10 text-[8px] font-bold uppercase tracking-[0.6em] flex justify-between">
         <span>TOMASZEK © 2026</span>
-        <span class="italic">Product Catalog</span>
+        <span class="italic">Katalog Produktów</span>
     </footer>
 
     <script>
@@ -119,7 +120,7 @@
             setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 600); }, 300);
         });
 
-        // SEARCH FUNCTION
+        // Функция поиска (работает и для ПК и для мобилок)
         const runSearch = (query) => {
             const filter = query.toLowerCase();
             const cards = document.querySelectorAll('.category-card');
@@ -134,12 +135,8 @@
             });
         };
 
-        // Listeners for both search bars
-        const sInput = document.getElementById('searchInput');
-        const mInput = document.getElementById('mobileSearchInput');
-
-        if(sInput) sInput.addEventListener('input', (e) => runSearch(e.target.value));
-        if(mInput) mInput.addEventListener('input', (e) => runSearch(e.target.value));
+        document.getElementById('searchInput').addEventListener('input', (e) => runSearch(e.target.value));
+        document.getElementById('mobileSearchInput').addEventListener('input', (e) => runSearch(e.target.value));
     </script>
 </body>
 </html>
