@@ -1,27 +1,22 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katalog | TOMASZEK</title>
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https://www.transparenttextures.com;">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <style>
         :root { --gold: #d4af37; --gold-light: #f3d97d; --graphite: #232326; }
         
         body { 
             font-family: 'Inter', sans-serif; background-color: var(--graphite);
-            background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
             color: white; margin: 0; min-height: 100vh; overflow-x: hidden;
         }
 
-        /* Линия: начинается и заканчивается цветом фона сайта */
+        /* 1. Линия: из фона в золото и обратно в фон */
         .premium-line {
-            width: 100%; height: 2px;
+            width: 100%; height: 1px;
             background: linear-gradient(to right, var(--graphite) 0%, rgba(212, 175, 55, 0.8) 50%, var(--graphite) 100%);
             margin-top: 10px;
         }
@@ -31,112 +26,118 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Кубики: чуть меньше, фото ЦВЕТНЫЕ сразу */
+        /* 2. Кубики: Меньше и СРАЗУ ЦВЕТНЫЕ фото */
         .category-card { 
-            background: #1a1a1c; border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            position: relative; overflow: hidden; aspect-ratio: 1/1; display: block;
-            max-width: 280px; margin: 0 auto; /* Уменьшили размер */
+            position: relative; overflow: hidden; aspect-ratio: 1/1;
+            max-width: 260px; margin: 0 auto; /* Уменьшенный размер */
         }
         
         .category-card:hover { 
-            border-color: var(--gold); transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border-color: var(--gold);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
         .category-card img { 
             width: 100%; height: 100%; object-fit: cover;
-            transition: all 0.8s ease; filter: brightness(0.8); /* СРАЗУ ЦВЕТНЫЕ */
+            transition: all 0.8s ease;
+            filter: brightness(0.9); /* Сразу цветные, просто чуть приглушены */
         }
 
         .category-card:hover img { transform: scale(1.1); filter: brightness(1); }
 
         .card-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); 
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); 
             position: absolute; inset: 0; display: flex; flex-direction: column; 
             justify-content: flex-end; padding: 20px; 
         }
 
-        /* PL / EN BUTTON (КАК НА ФОТО) */
-        .lang-pill {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 999px; padding: 6px 20px;
-            display: flex; align-items: center; gap: 10px;
+        /* 3. PL / EN (Тот самый бабл с фото) */
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 5px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .lang-active { color: var(--gold); font-weight: 900; font-style: italic; font-size: 14px; }
-        .lang-sep { color: rgba(255,255,255,0.2); font-size: 18px; font-weight: 300; transform: skewX(-15deg); }
-        .lang-inactive { color: rgba(255,255,255,0.4); font-weight: 900; font-style: italic; font-size: 14px; }
+        .lang-switch span.active { color: var(--gold); font-weight: 900; font-style: italic; font-size: 13px; }
+        .lang-switch .divider { color: rgba(255,255,255,0.2); font-weight: 300; transform: skewX(-15deg); }
+        .lang-switch a { color: rgba(255,255,255,0.4); font-weight: 900; font-style: italic; font-size: 13px; }
 
-        .search-field {
-            background: transparent; border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        .search-under {
+            background: transparent; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             outline: none; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
-            width: 120px; transition: 0.3s;
+            width: 130px; transition: 0.3s;
         }
-        .search-field:focus { width: 180px; border-color: var(--gold); }
+        .search-under:focus { width: 180px; border-color: var(--gold); }
     </style>
 </head>
-<body class="p-6 md:px-16 md:py-10">
+<body class="p-6 md:px-16 md:py-8">
 
-    <nav class="flex justify-between items-center mb-16 relative z-20">
+    <nav class="flex justify-between items-center mb-12 relative z-20">
         <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition">← Powrót</a>
         
-        <div class="flex items-center space-x-8">
-            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="search-field py-1">
+        <div class="flex items-center space-x-6">
+            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="search-under py-1">
 
-            <div class="lang-pill">
-                <span class="lang-active uppercase">PL</span>
-                <span class="lang-sep">|</span>
-                <a href="katalog-en.html" class="lang-inactive uppercase hover:text-white transition">EN</a>
+            <div class="lang-switch">
+                <span class="active uppercase">PL</span>
+                <span class="divider">|</span>
+                <a href="katalog-en.html" class="uppercase hover:text-white transition">EN</a>
             </div>
         </div>
     </nav>
 
-    <header class="mb-20 text-center">
+    <header class="mb-16 text-center">
         <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter logo-text-gold uppercase inline-block">Katalog</h1>
         <div class="premium-line"></div>
     </header>
 
-    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <a href="kat-okulary.html" class="category-card" data-name="okulary">
-            <img src="./img/okulary.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Okulary</h3></div>
+            <img src="./img/okulary.jpg" alt="Okulary">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Okulary</h3></div>
         </a>
 
         <a href="kat-fejerwerki.html" class="category-card" data-name="fejerwerki">
-            <img src="./img/fejerwerki.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Fejerwerki</h3></div>
+            <img src="./img/fejerwerki.jpg" alt="Fejerwerki">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Fejerwerki</h3></div>
         </a>
 
         <a href="kat-kaski.html" class="category-card" data-name="gogle kaski">
-            <img src="./img/kaski.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Gogle / Kaski</h3></div>
+            <img src="./img/kaski.jpg" alt="Kaski">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Gogle / Kaski</h3></div>
         </a>
 
         <a href="kat-zabawki.html" class="category-card" data-name="zabawki">
-            <img src="./img/zabawki.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Zabawki</h3></div>
+            <img src="./img/zabawki.jpg" alt="Zabawki">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Zabawki</h3></div>
         </a>
 
         <a href="kat-plazowe.html" class="category-card" data-name="plażowe">
-            <img src="./img/plazowe.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Art. Plażowe</h3></div>
+            <img src="./img/plazowe.jpg" alt="Plażowe">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Art. Plażowe</h3></div>
         </a>
 
         <a href="kat-znicze.html" class="category-card" data-name="znicze">
-            <img src="./img/znicze.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Znicze / Wkłady</h3></div>
+            <img src="./img/znicze.jpg" alt="Znicze">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Znicze / Wkłady</h3></div>
         </a>
 
         <a href="kat-breloki.html" class="category-card" data-name="breloki">
-            <img src="./img/breloki.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Breloki</h3></div>
+            <img src="./img/breloki.jpg" alt="Breloki">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Breloki</h3></div>
         </a>
 
         <a href="kat-pochodni.html" class="category-card" data-name="pochodni">
-            <img src="./img/pochodni.jpg">
-            <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Pochodni</h3></div>
+            <img src="./img/pochodni.jpg" alt="Pochodni">
+            <div class="card-overlay"><h3 class="text-lg font-black uppercase italic">Pochodni</h3></div>
         </a>
 
     </div>
