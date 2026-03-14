@@ -3,167 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog | TOMASZEK</title>
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https://www.transparenttextures.com;">
-    <meta name="description" content="Profesjonalny katalog produktów TOMASZEK - Okulary, Zabawki, Artykuły sezonowe. Najwyższa jakość.">
-    <link rel="canonical" href="https://www.tomaszek.pl/katalog.html">
-    <link rel="alternate" hreflang="pl" href="https://www.tomaszek.pl/katalog.html">
-    <link rel="alternate" hreflang="en" href="https://www.tomaszek.pl/katalog-en.html">
-
-    <title>Katalog | TOMASZEK</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --graphite: #232326; }
+        :root { --gold: #d4af37; --gold-light: #f3d97d; --graphite: #232326; }
         
         body { 
             font-family: 'Inter', sans-serif; background-color: var(--graphite);
-            background-image: radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 35%), 
-                              radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 35%);
-            color: white; margin: 0; min-height: 100vh; position: relative; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
+            color: white; margin: 0; min-height: 100vh; overflow-x: hidden;
         }
 
-        body::before {
-            content: ""; position: fixed; inset: 0;
-            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-            opacity: 0.2; pointer-events: none; z-index: 0;
+        /* Линия: начинается и заканчивается цветом фона сайта */
+        .premium-line {
+            width: 100%; height: 2px;
+            background: linear-gradient(to right, var(--graphite) 0%, rgba(212, 175, 55, 0.8) 50%, var(--graphite) 100%);
+            margin-top: 10px;
         }
 
         .logo-text-gold {
-            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Длинная линия, уходящая в цвет фона */
-        .premium-line-gradient {
-            width: 100%; height: 1px;
-            background: linear-gradient(to right, white 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-            opacity: 0.5;
-        }
-
-        /* Кубики в сетке 4 в ряд */
+        /* Кубики: чуть меньше, фото ЦВЕТНЫЕ сразу */
         .category-card { 
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; overflow: hidden; aspect-ratio: 1/1; z-index: 10;
-            cursor: pointer; display: block;
+            background: #1a1a1c; border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative; overflow: hidden; aspect-ratio: 1/1; display: block;
+            max-width: 280px; margin: 0 auto; /* Уменьшили размер */
         }
         
         .category-card:hover { 
-            border-color: var(--gold-dark);
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            border-color: var(--gold); transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .category-card img { 
-            width: 100%; height: 100%; object-fit: cover; object-position: center;
-            transition: all 0.9s ease; filter: brightness(0.6) grayscale(100%); 
+            width: 100%; height: 100%; object-fit: cover;
+            transition: all 0.8s ease; filter: brightness(0.8); /* СРАЗУ ЦВЕТНЫЕ */
         }
 
-        .category-card:hover img { transform: scale(1.1); filter: brightness(0.9) grayscale(0%); opacity: 0.5; }
+        .category-card:hover img { transform: scale(1.1); filter: brightness(1); }
 
         .card-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 70%); 
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); 
             position: absolute; inset: 0; display: flex; flex-direction: column; 
             justify-content: flex-end; padding: 20px; 
         }
 
-        /* Стилизация поиска */
-        .search-input {
-            background: rgba(255,255,255,0.05);
+        /* PL / EN BUTTON (КАК НА ФОТО) */
+        .lang-pill {
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            color: white; font-size: 10px; letter-spacing: 0.1em;
-            transition: all 0.4s ease; outline: none;
+            border-radius: 999px; padding: 6px 20px;
+            display: flex; align-items: center; gap: 10px;
         }
-        .search-input:focus { border-color: var(--gold-dark); background: rgba(255,255,255,0.1); width: 180px; }
+        .lang-active { color: var(--gold); font-weight: 900; font-style: italic; font-size: 14px; }
+        .lang-sep { color: rgba(255,255,255,0.2); font-size: 18px; font-weight: 300; transform: skewX(-15deg); }
+        .lang-inactive { color: rgba(255,255,255,0.4); font-weight: 900; font-style: italic; font-size: 14px; }
 
-        #loader { position: fixed; inset: 0; background: var(--graphite); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s ease; }
+        .search-field {
+            background: transparent; border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            outline: none; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+            width: 120px; transition: 0.3s;
+        }
+        .search-field:focus { width: 180px; border-color: var(--gold); }
     </style>
 </head>
-
 <body class="p-6 md:px-16 md:py-10">
-    <div id="loader"><div class="logo-text-gold text-2xl font-black italic animate-pulse">TOMASZEK</div></div>
 
-    <nav class="flex justify-between items-center mb-12 border-b border-white/10 pb-6 relative z-20">
-        <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition group flex items-center">
-            <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span> Powrót
-        </a>
+    <nav class="flex justify-between items-center mb-16 relative z-20">
+        <a href="index.html" class="text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition">← Powrót</a>
         
-        <div class="flex items-center space-x-6">
-            <div class="relative hidden md:block">
-                <input type="text" id="catSearch" placeholder="SZUKAJ..." class="search-input rounded-full px-4 py-1.5 w-32 uppercase font-bold">
-            </div>
+        <div class="flex items-center space-x-8">
+            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="search-field py-1">
 
-            <div class="flex space-x-4 text-[11px] font-black italic">
-                <span class="text-[#d4af37]">PL</span>
-                <span class="opacity-10">|</span>
-                <a href="katalog-en.html" class="hover:text-[#d4af37] transition opacity-40">EN</a>
+            <div class="lang-pill">
+                <span class="lang-active uppercase">PL</span>
+                <span class="lang-sep">|</span>
+                <a href="katalog-en.html" class="lang-inactive uppercase hover:text-white transition">EN</a>
             </div>
         </div>
     </nav>
 
-    <header class="mb-16 relative z-20 w-full">
-        <h1 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4 logo-text-gold">KATALOG</h1>
-        <div class="premium-line-gradient"></div>
+    <header class="mb-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter logo-text-gold uppercase inline-block">Katalog</h1>
+        <div class="premium-line"></div>
     </header>
 
-    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative z-20">
+    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         
-        <a href="kategoria-okulary.html" class="category-card" data-name="okulary sun glasses">
-            <img src="./img/okulary.jpg" alt="Okulary">
+        <a href="kat-okulary.html" class="category-card" data-name="okulary">
+            <img src="./img/okulary.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Okulary</h3></div>
         </a>
 
-        <a href="kategoria-fejerwerki.html" class="category-card" data-name="fejerwerki fireworks">
-            <img src="./img/fejerwerki.jpg" alt="Fejerwerki">
+        <a href="kat-fejerwerki.html" class="category-card" data-name="fejerwerki">
+            <img src="./img/fejerwerki.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Fejerwerki</h3></div>
         </a>
 
-        <a href="kategoria-kaski.html" class="category-card" data-name="gogle kaski helmets">
-            <img src="./img/kaski.jpg" alt="Kaski">
+        <a href="kat-kaski.html" class="category-card" data-name="gogle kaski">
+            <img src="./img/kaski.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Gogle / Kaski</h3></div>
         </a>
 
-        <a href="kategoria-zabawki.html" class="category-card" data-name="zabawki toys">
-            <img src="./img/zabawki.jpg" alt="Zabawki">
+        <a href="kat-zabawki.html" class="category-card" data-name="zabawki">
+            <img src="./img/zabawki.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Zabawki</h3></div>
         </a>
 
-        <a href="kategoria-plazowe.html" class="category-card" data-name="plażowe art beach summer">
-            <img src="./img/plazowe.jpg" alt="Artykuły Plażowe">
+        <a href="kat-plazowe.html" class="category-card" data-name="plażowe">
+            <img src="./img/plazowe.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Art. Plażowe</h3></div>
         </a>
 
-        <a href="kategoria-znicze.html" class="category-card" data-name="znicze wkłady candles">
-            <img src="./img/znicze.jpg" alt="Znicze">
+        <a href="kat-znicze.html" class="category-card" data-name="znicze">
+            <img src="./img/znicze.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Znicze / Wkłady</h3></div>
         </a>
 
-        <a href="kategoria-breloki.html" class="category-card" data-name="breloki keychains">
-            <img src="./img/breloki.jpg" alt="Breloki">
+        <a href="kat-breloki.html" class="category-card" data-name="breloki">
+            <img src="./img/breloki.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Breloki</h3></div>
         </a>
 
-        <a href="kategoria-pochodni.html" class="category-card" data-name="pochodni torches">
-            <img src="./img/pochodni.jpg" alt="Pochodni">
+        <a href="kat-pochodni.html" class="category-card" data-name="pochodni">
+            <img src="./img/pochodni.jpg">
             <div class="card-overlay"><h3 class="text-xl font-black uppercase italic">Pochodni</h3></div>
         </a>
 
     </div>
 
     <script>
-        // Loader
-        window.addEventListener("load", () => {
-            const loader = document.getElementById("loader");
-            setTimeout(() => {
-                loader.style.opacity = "0";
-                setTimeout(() => loader.style.display = "none", 500);
-            }, 400);
-        });
-
-        // Search logic
         const searchInput = document.getElementById('catSearch');
         const cards = document.querySelectorAll('.category-card');
 
