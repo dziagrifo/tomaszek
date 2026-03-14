@@ -27,128 +27,136 @@
             height: 1px;
             background: linear-gradient(to right, var(--gold) 0%, transparent 100%);
             width: 100%;
-            margin-top: 1.5rem;
-            opacity: 0.4;
+            margin-top: 1rem;
+            opacity: 0.5;
         }
 
-        .search-under-lang {
+        .search-trigger {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             transition: all 0.3s ease;
         }
-        .search-under-lang:focus-within { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+        .search-trigger:focus-within { border-color: var(--gold); background: rgba(255,255,255,0.08); }
 
-        /* Квадраты из истории */
-        .cat-cube {
-            background: #111113;
+        /* Та самая сетка кубов */
+        .grid-cube {
             aspect-ratio: 1 / 1;
+            background: #111113;
             border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 2.5rem;
             text-decoration: none;
         }
-        .cat-cube:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .cat-cube img {
+        .grid-cube:hover { border-color: var(--gold); transform: translateY(-8px); z-index: 10; }
+        
+        .grid-cube img {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0.3;
-            transition: all 0.7s ease;
             filter: grayscale(100%);
+            transition: all 0.8s ease;
             z-index: 0;
         }
-        .cat-cube:hover img { opacity: 0.6; filter: grayscale(0%); transform: scale(1.1); }
-        .cat-title { position: relative; z-index: 10; font-weight: 900; text-transform: uppercase; font-style: italic; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .grid-cube:hover img { opacity: 0.7; filter: grayscale(0%); transform: scale(1.1); }
+        
+        .cube-title {
+            position: relative;
+            z-index: 10;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+            font-size: 1.75rem;
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+        .cube-num { position: relative; z-index: 10; color: var(--gold); font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; }
 
-        #loader { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.4s ease; }
+        #loader { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s ease; }
     </style>
 </head>
 
 <body>
-    <div id="loader"><div class="text-[#d4af37] text-xl font-900 italic tracking-[0.5em] animate-pulse">TOMASZEK</div></div>
+    <div id="loader"><div class="text-[#d4af37] text-2xl font-900 italic tracking-[0.4em] animate-pulse">TOMASZEK</div></div>
 
-    <header class="px-6 md:px-12 py-6">
-        <div class="max-w-[1800px] mx-auto flex justify-between items-start">
-            <a href="index.html" class="group flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.3em] opacity-50 hover:opacity-100 transition">
-                <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Powrót</span>
-            </a>
+    <header class="max-w-[1800px] mx-auto px-6 md:px-12 py-8 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.3em] opacity-50 hover:opacity-100 transition group">
+            <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Powrót</span>
+        </a>
 
-            <div class="flex flex-col items-end space-y-4">
-                <div class="flex items-center space-x-4">
-                    <div class="search-under-lang flex items-center px-4 py-2 rounded-full">
-                        <input type="text" id="searchInput" placeholder="SZUKAJ..." class="bg-transparent border-none outline-none text-[10px] font-bold tracking-widest w-32 md:w-48 text-white">
-                        <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2"/></svg>
-                    </div>
-                    <div class="flex items-center space-x-2 text-[11px] font-900 italic bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                        <span class="text-[#d4af37]">PL</span>
-                        <span class="opacity-20">|</span>
-                        <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
-                    </div>
-                </div>
+        <div class="flex items-center space-x-6">
+            <div class="search-trigger flex items-center px-4 py-2 rounded-full">
+                <input type="text" id="searchInput" placeholder="SZUKAJ..." class="bg-transparent border-none outline-none text-[10px] font-black tracking-widest w-28 md:w-48 text-white placeholder-white/20">
+                <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2"/></svg>
+            </div>
+            <div class="flex items-center space-x-2 text-[11px] font-900 italic bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                <span class="text-[#d4af37]">PL</span>
+                <span class="opacity-20">|</span>
+                <a href="katalog-en.html" class="opacity-40 hover:opacity-100 transition">EN</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-[1800px] mx-auto px-6 md:px-12 pb-20">
-        <div class="mb-12">
-            <h1 class="text-6xl md:text-8xl font-900 uppercase italic leading-none">Katalog</h1>
+    <main class="max-w-[1800px] mx-auto px-6 md:px-12 pb-24">
+        <div class="mb-16">
+            <h1 class="text-7xl md:text-9xl font-900 uppercase italic leading-none tracking-tighter">Katalog</h1>
             <div class="premium-line"></div>
         </div>
 
-        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             
-            <a href="kat-zabawki.html" class="cat-cube group" data-name="zabawki toys">
-                <img src="./img/zabawki.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">01</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Zabawki</span>
+            <a href="kat-zabawki.html" class="grid-cube" data-name="zabawki toys">
+                <img src="./img/zabawki.jpg" alt="Zabawki">
+                <span class="cube-num">01</span>
+                <span class="cube-title">Zabawki</span>
             </a>
 
-            <a href="kat-okulary.html" class="cat-cube group" data-name="okulary sun glasses">
-                <img src="./img/okulary.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">02</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Okulary</span>
+            <a href="kat-okulary.html" class="grid-cube" data-name="okulary sunglasses">
+                <img src="./img/okulary.jpg" alt="Okulary">
+                <span class="cube-num">02</span>
+                <span class="cube-title">Okulary</span>
             </a>
 
-            <a href="kat-sezonowe.html" class="cat-cube group" data-name="sezonowe seasonal">
-                <img src="./img/sezonowe.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">03</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Sezonowe</span>
+            <a href="kat-sezonowe.html" class="grid-cube" data-name="sezonowe seasonal">
+                <img src="./img/sezonowe.jpg" alt="Sezonowe">
+                <span class="cube-num">03</span>
+                <span class="cube-title">Sezonowe</span>
             </a>
 
-            <a href="kat-plaza.html" class="cat-cube group" data-name="plaża beach summer">
-                <img src="./img/plaza.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">04</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Plaża</span>
+            <a href="kat-plaza.html" class="grid-cube" data-name="plaża beach">
+                <img src="./img/plaza.jpg" alt="Plaża">
+                <span class="cube-num">04</span>
+                <span class="cube-title">Plaża</span>
             </a>
 
-            <a href="kat-sport.html" class="cat-cube group" data-name="sport fitness">
-                <img src="./img/sport.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">05</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Sport</span>
+            <a href="kat-sport.html" class="grid-cube" data-name="sport fitness">
+                <img src="./img/sport.jpg" alt="Sport">
+                <span class="cube-num">05</span>
+                <span class="cube-title">Sport</span>
             </a>
 
-            <a href="kat-ogrod.html" class="cat-cube group" data-name="ogród garden">
-                <img src="./img/ogrod.jpg" alt="">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">06</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Ogród</span>
+            <a href="kat-ogrod.html" class="grid-cube" data-name="ogród garden">
+                <img src="./img/ogrod.jpg" alt="Ogród">
+                <span class="cube-num">06</span>
+                <span class="cube-title">Ogród</span>
             </a>
 
-            <a href="kat-nowosci.html" class="cat-cube group bg-white/5" data-name="nowości news">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">07</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Nowości</span>
+            <a href="kat-nowosci.html" class="grid-cube bg-white/[0.02]" data-name="nowości news">
+                <span class="cube-num">07</span>
+                <span class="cube-title">Nowości</span>
             </a>
 
-            <a href="kat-outlet.html" class="cat-cube group bg-white/5" data-name="outlet sale">
-                <span class="text-[#d4af37] text-xs font-bold mb-2 z-10">08</span>
-                <span class="cat-title group-hover:text-[#d4af37] transition">Outlet</span>
+            <a href="kat-outlet.html" class="grid-cube bg-white/[0.02]" data-name="outlet sale">
+                <span class="cube-num">08</span>
+                <span class="cube-title">Outlet</span>
             </a>
 
         </div>
@@ -157,11 +165,12 @@
     <script>
         window.addEventListener("load", () => {
             const l = document.getElementById("loader");
-            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 400); }, 300);
+            setTimeout(() => { l.style.opacity = "0"; setTimeout(() => l.style.display = "none", 500); }, 400);
         });
 
+        // Поиск работает мгновенно
         const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.cat-cube');
+        const cards = document.querySelectorAll('.grid-cube');
 
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
