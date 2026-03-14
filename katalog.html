@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     <title>Katalog Produktów | TOMASZEK GROUP</title>
-    <meta name="description" content="Profesjonalny katalog produktów Tomaszek Group. Wybierz jakość и doświadczenie в dystrybucji zabawek, okularów i artykułów sezonowych.">
+    <meta name="description" content="Profesjonalny katalog produktów Tomaszek Group. Wybierz jakość i doświadczenie в dystrybucji.">
     <meta name="robots" content="index, follow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,32 +17,75 @@
 
     <style>
         :root { --gold-light: #f3d97d; --gold-dark: #d4af37; --dark-bg: #1e1e26; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; }
-        .logo-text-gold { background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .lang-capsule { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 99px; padding: 4px 12px; font-size: 11px; font-weight: 900; }
+        body { 
+            font-family: 'Inter', sans-serif; background-color: var(--dark-bg);
+            color: white; margin: 0; overflow-x: hidden;
+        }
+
+        .logo-text-gold {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .lang-capsule {
+            display: flex; align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px; padding: 4px 12px;
+            font-size: 11px; font-weight: 900;
+        }
+
         .catalog-container { max-width: 1280px; margin: 0 auto; }
+
+        /* Та самая новая статичная линия */
+        .separator-line {
+            width: 100%;
+            height: 1px;
+            /* Градиент: от золотого слева до полного растворения в фоне справа */
+            background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.5) 50%, transparent 100%);
+            margin-top: 1rem;
+            opacity: 0.6;
+        }
 
         .category-card { 
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            position: relative; overflow: hidden; aspect-ratio: 1/1;
-            display: block; /* Делаем всю карточку ссылкой */
+            position: relative; overflow: hidden; aspect-ratio: 1/1; display: block;
         }
         
-        .category-card:hover { border-color: var(--gold-dark); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; filter: brightness(0.6); }
-        .category-card:hover img { transform: scale(1.1); filter: brightness(0.9); }
-        .card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 20px; }
+        .category-card:hover { 
+            border-color: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
 
-        #loader { position: fixed; inset: 0; background: #1e1e26; display: flex; align-items: center; justify-content: center; z-index: 999; transition: opacity 0.6s ease; }
+        .category-card img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 1s ease; filter: brightness(0.6); 
+        }
+
+        .category-card:hover img { transform: scale(1.1); filter: brightness(0.9); }
+
+        .card-overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); 
+            position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 20px; 
+        }
+
+        #loader {
+            position: fixed; inset: 0; background: #1e1e26;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 999; transition: opacity 0.6s ease;
+        }
     </style>
 </head>
 
 <body class="px-6">
 
-    <div id="loader"><div class="text-[#d4af37] text-xl font-900 uppercase italic tracking-[4px] animate-pulse">Tomaszek</div></div>
+    <div id="loader">
+        <div class="text-[#d4af37] text-xl font-900 uppercase italic tracking-[4px] animate-pulse">Tomaszek</div>
+    </div>
 
     <nav class="max-w-7xl mx-auto flex justify-between items-center py-8 border-b border-white/5 relative z-20">
         <a href="index.html" class="flex items-center space-x-3 opacity-40 hover:opacity-100 transition">
@@ -57,7 +100,8 @@
 
     <header class="catalog-container mt-16 mb-12 relative z-20">
         <h1 class="text-4xl md:text-5xl font-black uppercase italic tracking-tighter logo-text-gold">Katalog</h1>
-        <div class="h-[1px] w-20 bg-[#d4af37] mt-4"></div>
+        <div class="separator-line"></div>
+        <p class="mt-6 text-[10px] uppercase tracking-[0.5em] opacity-30 font-bold">Wybierz kategorię</p>
     </header>
 
     <main class="catalog-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 relative z-20 pb-24">
@@ -72,8 +116,8 @@
             <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Fejerwerki</h3></div>
         </a>
         
-        <a href="kaski.html" class="category-card" title="Zobacz ofertę kasków i gogli">
-            <img src="./img/kaski.jpg" alt="Gogle i Kaski">
+        <a href="kaski.html" class="category-card" title="Zobacz ofertę kasków и gogli">
+            <img src="./img/kaski.jpg" alt="Gogle и Kaski">
             <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Gogle / Kaski</h3></div>
         </a>
         
@@ -87,7 +131,7 @@
             <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Art. Plażowe</h3></div>
         </a>
         
-        <a href="znicze.html" class="category-card" title="Zobacz znicze и wkłady">
+        <a href="znicze.html" class="category-card" title="Zobacz znicze">
             <img src="./img/znicze.jpg" alt="Znicze">
             <div class="card-overlay"><h3 class="text-lg font-black uppercase italic tracking-tight">Znicze / Wkłady</h3></div>
         </a>
