@@ -17,7 +17,7 @@
             color: white; margin: 0; min-height: 100vh; display: flex; flex-direction: column;
         }
 
-        /* Линия: начало золотое, уход в фон */
+        /* Плавная линия под заголовком */
         .premium-line-fade {
             width: 100%; height: 1px;
             background: linear-gradient(to right, var(--gold-dark) 0%, rgba(212, 175, 55, 0.3) 30%, transparent 100%);
@@ -29,7 +29,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* PL EN BUBBLE */
+        /* PL EN BUBBLE (из твоего фото) */
         .lang-pill {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -37,13 +37,14 @@
             display: flex; align-items: center; gap: 8px;
         }
         .lang-active { color: var(--gold-dark); font-weight: 900; font-style: italic; font-size: 12px; }
-        .lang-sep { color: rgba(255, 255, 255, 0.2); transform: skewX(-15deg); }
+        .lang-sep { color: rgba(255, 255, 255, 0.2); transform: skewX(-15deg); font-weight: 300; }
         .lang-link { color: rgba(255, 255, 255, 0.4); font-weight: 900; font-style: italic; font-size: 12px; }
 
-        /* СЕТКА: Компактная и эстетичная */
+        /* Компактная сетка */
         .catalog-container {
-            max-width: 1100px; /* Сжимаем всю сетку, чтобы не была разбросана */
+            max-width: 1050px; 
             margin: 0 auto;
+            width: 100%;
         }
 
         .category-card { 
@@ -60,33 +61,46 @@
 
         .category-card img { 
             width: 100%; height: 100%; object-fit: cover;
-            transition: 1s ease; filter: brightness(0.7);
+            transition: 1s ease; filter: brightness(0.8);
         }
-        .category-card:hover img { transform: scale(1.1); filter: brightness(1); }
+        .category-card:hover img { transform: scale(1.1); filter: brightness(1.1); }
 
         .card-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); 
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); 
             position: absolute; inset: 0; display: flex; flex-direction: column; 
             justify-content: flex-end; padding: 15px; 
         }
 
-        /* FOOTER: Просто белый как просил */
+        /* Белый футер */
         .footer-text {
             color: white; font-size: 10px; text-transform: uppercase; 
-            letter-spacing: 0.15em; opacity: 0.6; font-weight: 400;
+            letter-spacing: 0.15em; opacity: 0.5; font-weight: 400;
         }
+
+        /* СТИЛЬ ДЛЯ POWROT С ВИДИМОЙ СТРЕЛКОЙ */
+        .btn-back {
+            display: flex; align-items: center; gap: 10px;
+            color: white; font-weight: 800; font-size: 13px;
+            text-transform: uppercase; tracking-widest;
+            transition: 0.3s;
+        }
+        .btn-back:hover { opacity: 0.7; }
+        .btn-back svg { width: 18px; height: 18px; stroke-width: 3px; }
     </style>
 </head>
 
 <body class="px-6 md:px-20 pt-10">
 
     <nav class="flex justify-between items-center mb-12">
-        <a href="index.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:var(--gold-light) transition">
-            ← Powrót
+        <a href="index.html" class="btn-back">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            POWRÓT
         </a>
         
         <div class="flex items-center space-x-6">
-            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="bg-transparent border-b border-white/10 outline-none text-[10px] tracking-widest w-24 focus:w-40 transition-all">
+            <input type="text" id="catSearch" placeholder="SZUKAJ..." class="bg-transparent border-b border-white/10 outline-none text-[10px] tracking-widest w-24 focus:w-40 transition-all text-white">
             <div class="lang-pill">
                 <span class="lang-active uppercase">PL</span>
                 <span class="lang-sep">|</span>
@@ -146,7 +160,7 @@
         </div>
     </main>
 
-    <footer class="flex justify-between items-center py-10">
+    <footer class="flex justify-between items-center py-10 mt-10">
         <div class="footer-text">© TOMASZEK GROUP</div>
         <div class="footer-text">© BY GRIFFIN WOOD</div>
     </footer>
